@@ -1,0 +1,53 @@
+*:focus{
+    outline: none !important;
+  }
+  
+  .main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+    margin-top: 100px;
+  }
+  
+  mat-icon:hover {
+    cursor: pointer;
+  }
+  
+  a{
+    color: #6200EE;
+  }
+
+  p.application{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 45px;
+    line-height: 25px;
+    margin-bottom:20px;
+  }
+  
+  p.app_description{
+    margin-bottom: 20px;
+    font-weight: 200;
+  }
+  
+  p.option{
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  p.breadcrumbs{
+    color: #6200EE;
+    font-size: 15px;
+  }
+  
+  .hrtop{
+    margin-top: 120px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .mat-card-avatar{
+    width: 60px;
+    height: 60px;
+  }
+
+  mat-form-field{
+    width: 100%;
+  }

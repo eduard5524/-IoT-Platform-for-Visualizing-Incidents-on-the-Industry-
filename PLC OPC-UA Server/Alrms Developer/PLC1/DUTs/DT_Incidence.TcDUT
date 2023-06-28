@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+  <DUT Name="DT_Incidence" Id="{f553488d-a11d-4b02-a2ef-2c6d646bbf28}">
+    <Declaration><![CDATA[{attribute 'OPC.UA.DA' := '1'}
+{attribute 'OPC.UA.DA.StructuredType' := '1'}
+TYPE DT_Incidence :
+	STRUCT
+	//From Self Name
+	WareHouse: STRING;
+	Device: STRING;
+	//Coded Value
+	Id: STRING(10);
+	//Exactly definition
+	Description: STRING(255);
+	Severity: DT_Incidence_Severity;
+	//Cíclic Results
+	State: BOOL;
+	K: BOOL;
+	END_STRUCT
+END_TYPE
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

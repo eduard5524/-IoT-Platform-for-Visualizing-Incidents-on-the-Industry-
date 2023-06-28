@@ -1,0 +1,459 @@
+openapi: 3.0.0
+info:
+  title: MIM
+  description: 'Collection of all api requests'
+  contact:
+    email: support@mim.com
+  version: 0.0.1
+servers:
+  -
+    url: 'http://localhost:8000/api'
+paths:
+  /auth/login:
+    post:
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  default: admin
+                password:
+                  type: string
+                  default: admin123
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  token: { type: string, example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbiIsInN1YiI6MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNTQ5MzY3ODM2LCJleHAiOjE1NDkzNjc4OTYsIm5iZiI6MTU0OTM2NzgzNiwianRpIjoiN1hzS3laYmU2bE1QaTVueSJ9.xJAEhfKneac8egOXl7hAa-BmpjIhsTu9Cjtk94BcvfU }
+                type: object
+        '400':
+          description: 'Wrong parameters'
+        '401':
+          description: 'Invalid credentials'
+  /auth/refresh:
+    post:
+      operationId: 'refresh token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                token:
+                  type: string
+                  default: '{{token}}'
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  token: { type: string, example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbiIsInN1YiI6MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNTQ5MzY3ODM2LCJleHAiOjE1NDkzNjc4OTYsIm5iZiI6MTU0OTM2NzgzNiwianRpIjoiN1hzS3laYmU2bE1QaTVueSJ9.xJAEhfKneac8egOXl7hAa-BmpjIhsTu9Cjtk94BcvfU }
+                type: object
+        '401':
+          description: 'Invalid or Missing token'
+  /auth/register:
+    post:
+      operationId: register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  default: newuser@email.com
+                password:
+                  type: string
+                  default: admin123
+                name:
+                  type: string
+                  default: name
+                surname:
+                  type: string
+                  default: surname
+                phone:
+                  type: string
+                  default: '123456789'
+              type: object
+      responses:
+        '400':
+          description: 'Wrong parameters'
+        '409':
+          description: 'Email already in use'
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, example: 21 }
+                  email: { type: string, example: newuser@email.com }
+                  name: { type: string, example: name }
+                  surname: { type: string, example: surname }
+                  phone: { type: string, example: '123456789' }
+                type: object
+  /auth/password:
+    put:
+      description: 'Edits the password of the user with the specified id'
+      operationId: 'edit password'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: number
+                  default: 21
+                password:
+                  type: string
+                  default: newpassword
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+        '404':
+          description: 'User not found'
+        '400':
+          description: 'No password or password too short'
+  /companies:
+    get:
+      description: 'Returns a list with all registered companies that meet the parameters requirements'
+      operationId: 'get companies'
+      responses:
+        '200':
+          description: 'Request successful'
+    put:
+      description: 'Edits the company with the specified id'
+      operationId: 'edit company'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: number
+                  default: 21
+                name:
+                  type: string
+                  default: 'New Company21'
+                email:
+                  type: string
+                  default: new_company21@email.com
+                phone:
+                  type: string
+                  default: '987654321'
+                IBAN:
+                  type: string
+                  default: ES501234123412341235
+                address:
+                  type: string
+                  default: 'Diagonal 127'
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 21 }
+                  name: { type: string, default: 'New Company21' }
+                  email: { type: string, default: new_company21@email.com }
+                  phone: { type: string, default: '987654321' }
+                  IBAN: { type: string, default: ES501234123412341235 }
+                  address: { type: string, default: 'Diagonal 127' }
+                type: object
+        '404':
+          description: 'Company not found'
+    post:
+      operationId: 'create company'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  default: Company21
+                email:
+                  type: string
+                  default: company21@email.com
+                phone:
+                  type: string
+                  default: '123456789'
+                IBAN:
+                  type: string
+                  default: ES501234123412341234
+                address:
+                  type: string
+                  default: 'Diagonal 126'
+              type: object
+      responses:
+        '400':
+          description: 'Wrong parameters'
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 21 }
+                  name: { type: string, default: Company21 }
+                  email: { type: string, default: company21@email.com }
+                  phone: { type: string, default: '123456789' }
+                  IBAN: { type: string, default: ES501234123412341234 }
+                  address: { type: string, default: 'Diagonal 126' }
+                type: object
+  '/companies/{id}':
+    get:
+      description: 'Returns the specified company'
+      operationId: 'get company'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Role id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  name: { type: string, default: Company21 }
+                  email: { type: string, default: company21@email.com }
+                  phone: { type: string, default: '123456789' }
+                  IBAN: { type: string, default: ES501234123412341234 }
+                  address: { type: string, default: 'Diagonal 126' }
+                type: object
+        '404':
+          description: 'Company not found'
+    delete:
+      description: 'Deletes the company with the specified id'
+      operationId: 'delete company'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Company id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+        '404':
+          description: 'Company not found'
+  /roles:
+    get:
+      description: 'Returns a list with all registered roles that meet the parameters requirements'
+      operationId: 'get roles'
+      responses:
+        '200':
+          description: 'Request successful'
+    put:
+      description: 'Edits the role with the specified id'
+      operationId: 'edit role'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: number
+                  default: 21
+                name:
+                  type: string
+                  default: 'New Role21'
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+        '404':
+          description: 'Role not found'
+    post:
+      operationId: 'create role'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  default: Role21
+              type: object
+      responses:
+        '400':
+          description: 'Wrong parameters'
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 21 }
+                  name: { type: string, default: Role21 }
+                type: object
+  '/roles/{id}':
+    get:
+      description: 'Returns the specified role'
+      operationId: 'get role'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Role id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 21 }
+                  name: { type: string, default: Role21 }
+                type: object
+        '404':
+          description: 'Role not found'
+    delete:
+      description: 'Deletes the role with the specified id'
+      operationId: 'delete role'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Role id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+        '404':
+          description: 'Role not found'
+  /users:
+    get:
+      description: 'Returns a list with all registered users that meet the parameters requirements'
+      operationId: 'get users'
+      responses:
+        '200':
+          description: 'Request successful'
+    put:
+      description: 'Edits the user with the specified id'
+      operationId: 'edit user'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: number
+                  default: 21
+                email:
+                  type: string
+                  default: new_email@email.com
+                name:
+                  type: string
+                  default: 'New Name'
+                surname:
+                  type: string
+                  default: 'New Surname'
+                phone:
+                  type: string
+                  default: '987654321'
+              type: object
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 21 }
+                  email: { type: string, default: new_email@email.com }
+                  name: { type: string, default: 'New Name' }
+                  surname: { type: string, default: 'New Surname' }
+                  phone: { type: string, default: '987654321' }
+                type: object
+        '404':
+          description: 'User not found'
+  '/users/{id}':
+    get:
+      description: 'Returns the specified user'
+      operationId: 'get user'
+      parameters:
+        -
+          name: Authorization
+          in: header
+          description: 'Access token'
+          required: true
+          schema:
+            default: 'bearer {{token}}'
+        -
+          name: id
+          in: path
+          description: 'User id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  id: { type: number, default: 1 }
+                  email: { type: string, default: user@email.com }
+                  name: { type: string, default: name }
+                  surname: { type: string, default: surname }
+                  phone: { type: string, default: '123456789' }
+                type: object
+        '404':
+          description: 'User not found'
+    delete:
+      description: 'Deletes the user with the specified id'
+      operationId: 'delete user'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'User id'
+          required: true
+          schema:
+            type: number
+            default: 21
+      responses:
+        '200':
+          description: 'Request successful'
+        '404':
+          description: 'User not found'

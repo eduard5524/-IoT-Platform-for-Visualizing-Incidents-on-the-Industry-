@@ -1,0 +1,125 @@
+<!-- Product Component Dialog -->
+
+<!-- Header -->
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'MATERIAL_MNG.create' | translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{ 'MATERIAL_MNG.edit' |  translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{ 'MATERIAL_MNG.detail' |  translate }}</h1>
+
+<!-- Content -->
+<div mat-dialog-content>
+    <!--First Row -->
+    <div class="mb-4">
+        <h5>{{ 'MATERIAL_MNG.information' | translate }}</h5>
+        <div class="row">
+            <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                <input matInput type="text" required [disabled]="!edit" name="title" id="title" [(ngModel)]="product.title"
+                placeholder="{{'MATERIAL_MNG.name' | translate}}">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                <mat-label>{{'MATERIAL_MNG.category' | translate}}</mat-label>
+                    <mat-select matInput type="text" name="category" id="category" [disabled]="!edit" [(ngModel)]="product.category"
+                    [(value)]="product.category">
+                        <mat-option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</mat-option>
+                    </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                <input name="code" id="code" matInput type="text" required [disabled]="!edit"
+                [(ngModel)]="product.codigo_articulo" placeholder="{{'MATERIAL_MNG.cod_art' | translate}}">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                <mat-label>{{'MATERIAL_MNG.made_in' | translate}}</mat-label>
+                <mat-select matInput type="text" name="madeIn" id="madeIn" [disabled]="!edit" [(ngModel)]="product.madeIn"
+                [(value)]="product.madeIn">
+                    <mat-option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!--Second Row -->
+    <div class="mb-4 row">
+        <div class="col-md-6">
+            <mat-label style="color:rgba(0, 0, 0, 0.38);font-size:12px;">{{'MATERIAL_MNG.tech_sheet' | translate}} (<a
+            href="{{product.tech_sheet}}" target="_blank">actual</a>)
+            </mat-label>
+            <input *ngIf="edit" style="font-size:12px" [disabled]="!edit" id="fileupload" (change)="onFileChange($event)"
+            class="form-control btn" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+            text/plain, application/pdf" />
+        </div>
+        <div class="col-md-6">
+            <mat-label style="color:rgba(0, 0, 0, 0.38);font-size:12px;">{{'MATERIAL_MNG.photo' | translate}} (<a
+            href="{{product.imageLink}}" target="_blank">actual</a>)
+            </mat-label>
+            <input *ngIf="edit" style="font-size:12px" [disabled]="!edit" id="photoupload" (change)="onPhotoChange($event)"
+            class="form-control btn" type="file" accept="image/*" />
+        </div>
+    </div>
+
+    <!-- Third Row -->
+    <div clas="mb-4">
+        <h5>{{ 'MATERIAL_MNG.prices_provider' | translate }}</h5>
+        <div class="row">
+        </div>
+        <div id="providers_list">
+            <div class="providers_edit" *ngFor="let proveedor of proveedores">
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'MATERIAL_MNG.provider' | translate}}</mat-label>
+                    <select [disabled]="!edit" matNativeControl class="mr-3 provider_select" name="">
+                        <option value="{{proveedor.id}}">{{proveedor.name}}</option>
+                        <option *ngFor="let provider of providers" value="{{provider.id}}">{{provider.name}}</option>
+                    </select>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                    <mat-label>{{'MATERIAL_MNG.price_sin_iva' | translate}}</mat-label>
+                    <input matInput [disabled]="!edit" class="provider_price provider_precio" type="text"
+                    value="{{proveedor.price_this_prod}}">
+                </mat-form-field>
+
+                <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+                    <mat-label>{{'MATERIAL_MNG.iva' | translate}}</mat-label>
+                    <input matInput [disabled]="!edit" class="provider_price provider_iva" type="text"
+                    value="{{proveedor.iva_this_prod}}">
+                </mat-form-field>
+
+                <mat-icon class="col-md-3" *ngIf="edit" style="cursor:pointer" class="delete">delete</mat-icon>
+            </div>
+        </div>
+
+        <br>
+        <div class="row float-right">
+            <div class="col-md-12">
+                <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="edit"
+                (click)="addProvider()">{{'MATERIAL_MNG.add_provider' | translate }}</button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+    </div>
+
+    <!-- Fourth Row -->
+    <div>
+        <h5>{{ 'MATERIAL_MNG.description' | translate }}</h5>
+        <mat-form-field class="col-md-12 mr-3" [ngClass]="mobileClass('field')">
+            <mat-label>{{'MATERIAL_MNG.description' | translate}}</mat-label>
+            <textarea name="description" id="description" [disabled]="!edit" matInput cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5">
+            {{product.description}}</textarea>
+        </mat-form-field>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+    <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">
+    {{'MATERIAL_MNG.cancel' | translate}}</button>
+    <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="edit"
+    (click)="onCreateClick()">{{'MATERIAL_MNG.save' | translate }}</button>
+    <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="!edit"
+    (click)="onClickEdit()">{{ 'MATERIAL_MNG.edit' | translate }}</button>
+</div>

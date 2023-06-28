@@ -1,0 +1,455 @@
+{
+    "generic_error_empty_param": "Please enter a valid value for {{value}} field",
+
+    "LOGIN": {
+        "title": "Robomap",
+        "message": "Innovation to the Industry",
+        "email": "User",
+        "password": "Password",
+        "login": "Login",
+        "register": "Sign up",
+        "sign_in": "Sign in",
+        "forgot": "Have you forgot your password?",
+        "error": "Invalid credentials",
+        "title_cloud": "Robomap Cloud",
+        "remember": "Remember",
+        "more_information": "More information",
+        "free_up": "Free up for 10 users",
+        "get_started": "Get started"
+    },
+
+    "SELECT_COMPANY": {
+        "title": "Select a organization",
+        "button_create": "Create a new organization"
+    },
+
+    "DASHBOARD": {
+        "title": "Robomap",
+        "lang": "Language",
+        "user": "User",
+        "company": "Organization",
+        "settings": "Settings",
+        "exit": "Logout",
+        "users": "Users",
+        "companies": "Organizations",
+        "roles": "Roles",
+        "view": "View List",
+        "add": "Add New",
+        "work": "Orders",
+        "incidents": "Incidents",
+        "mfc": "MFC",
+        "general_config": "General configuration"
+    },
+
+    "HELP":{
+        "title": "Help Center",
+        "content": "In case you are having issues or any other question don't doubt to access the Help Center, where you will find:",
+        "wiki": "Wiki",
+        "support": "Support Team"
+    },
+
+    "ROLE": {
+        "lock": "Default role",
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "roles": "Roles",
+        "roles_list": "Roles list"
+    },
+
+    "COMPANY_DIALOG": {
+        "title_create": "Create a new organization",
+        "title_info": "Organization info",
+        "title_edit": "Edit organization",
+        "name": "Name",
+        "nif": "NIF/VAT",
+        "email": "Email",
+        "address": "Address",
+        "phone": "Phone",
+        "parent": "Parent organization",
+        "create": "Create",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "none": "None"
+    },
+
+    "USER_DIALOG": {
+        "title_create": "Create a new user",
+        "title_info": "User info",
+        "title_edit": "Edit user",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "role": "Role",
+        "admin": "Admin",
+        "user": "User",
+        "telephone": "Telephone",
+        "create": "Create",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "company": "Organization"
+    },
+
+    "WELCOME": {
+        "title": "Welcome",
+        "subtitle": "Innovating in the industry",
+        "message": "Welcome to Robomap software management page.",
+        "start": "Start!"
+    },
+
+    "USERS": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "user_profile": "User profile",
+        "users": "Users",
+        "users_list": "Users list"
+    },
+
+    "COMPANY": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "companies": "Organizations",
+        "companies_list": "Organizations list"
+    },
+
+    "DELETE_USER": {
+        "title": "Delete user",
+        "question": "Are you sure you want to delete ",
+        "delete": "Delete",
+        "cancel": "Cancel"
+    },
+
+    "DELETE_COMPANY": {
+        "title": "Delete organization",
+        "question": "Are you sure you want to delete ",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "company": "Organization"
+    },
+
+    "DELETE_ROLE": {
+        "title": "Delete role",
+        "question": "Are you sure you want to delete the role ",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "select_new": "Select the new role:",
+        "select_placeholder": "New role",
+        "select_none": "None"
+    },
+
+    "DIALOG_ROLE": {
+        "title_create": "Create a new role",
+        "title_info": "Organization role",
+        "title_edit": "Edit role",
+        "title": "Role",
+        "name": "Name",
+        "permissions": "Permissions",
+        "mode": "Mode",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "none": "None",
+        "admin": "Admin",
+        "read": "Read",
+        "write": "Write",
+        "application": "Application",
+        "module": "Module",
+        "organization": "Organization",
+        "description": "Description"
+    },
+
+    "MFC": {
+        "mfc": "MFC",
+        "severity": "Severity",
+        "title": "Title",
+        "location": "Location",
+        "devicetype": "Device type",
+        "created": "Created",
+        "triggered": "Triggered",
+        "resolvingtime": "Resolving date",
+        "acknow": "Acknow",
+        "acknowledgedby": "Acknowledged by",
+        "detail": "Detail",
+        "last_update": "Last update",
+        "state": "State",
+        "active": "Active",
+        "last_incident": "Last incident",
+        "last_acknow": "Last acknow"
+    },
+
+    "DETAIL_MFC": {
+        "detail": "Detail",
+        "historical": "Historical",
+        "comments": "Comments",
+        "new_comment": "New comment",
+        "date": "Date",
+        "by": "By",
+        "comment": "Comment",
+        "acknow": "Acknow"
+    },
+
+    "ACKNOW": {
+        "what_alarm": "What alarm do you want to deactivate?",
+        "send_alarm_desactivation": "Send alarm deactivation request to the PLC",
+        "deactivate_all": "Deactivate all alarms",
+        "deactivate_this": "Deactivate alarm",
+        "of_plc": "of PLC",
+        "deactivate_warning": "The PLC will only deactivate the alarm if the underlying conditions that triggered it are no longer met",
+        "alarm_deactivate_process": "The alarm deactivation request has been sent",
+        "all_alarm_deactivate_process": "The request to deactivate ALL PLC alarms has been sent",
+        "are_you_sure_deactivate_all": "Are you sure you want to send request to deactivate all PLC alarms?",
+        "yes": "Yes",
+        "no": "No"
+    },
+
+    "NEW_COMMENT_MFC": {
+        "create_comment": "Create comment",
+        "new_comment_added": "New comment added",
+        "new_comment_error": "Could not add comment"
+    },
+
+    "ALARM_DESCRIPTION": {
+        "1": "Disabled by HMI",
+        "2": "Disconnected from network"
+    },
+
+    "ALARM_VALUE_UNIT": {
+        "1": "volts"
+    },
+
+    "ALARM_SEVERITY": {
+        "1": "Warning",
+        "2": "Error",
+        "3": "Fatal"
+    },
+
+
+    "Neuraflow_Incidences":
+    {
+        "Monitor": "Monitor",
+        "Incidences": "Incidences",
+        "Neuraflow": "Neuraflow",
+        "ID": "ID",
+        "ID_Incidence": "Incidence ID",
+        "Description": "Description",
+        "Device": "Device",
+        "Severity": "Severity",
+        "State": "State"
+    },
+
+    "Neuraflow_Devices":
+    {
+        "Devices": "Devices",
+        "Manage": "Manage"
+    },
+
+    "FOOTER": {
+        "aviso_legal": "Legal advice",
+        "politica_cookies": "Cookies policy",
+        "politica_privacidad": "Privacy policy"
+    },
+
+    "SIDENAV_neuraflow": {
+        "monitor": "Monitor",
+        "configuration": "Configuration",
+        "manage": "Manage",
+        "devices": "Devices",
+        "metrics": "Metrics"
+    },
+
+    "SIDENAV": {
+        "configuration": "Configuration",
+        "devices": "Devices",
+        "settings": "Settings",
+        "general_settings": "General Settings",
+        "monitoring_control": "Monitoring & Control",
+        "incidences": "Incidences",
+        "scada": "Scada",
+        "statistics": "Statistics",
+        "material_flow_control": "Material Flow Control",
+        "containers": "Containers",
+        "chutes": "Chutes",
+        "material_management": "Material Management",
+        "purchase_orders": "Purchase Orders",
+        "purchases": "Purchases",
+        "components_purchased": "Elements Purchased",
+        "providers": "Providers",
+        "products": "Products",
+        "components": "Elements",
+        "manufacturers": "Manufacturers",
+        "families": "Families",
+        "categories": "Categories",
+        "sales": "Sales",
+        "invoices": "Invoices",
+        "clients": "Clients",
+        "warehouse": "Warehouse",
+        "connections": "Connections",
+        "dashboard": "Dashboard",
+        "locations": "Locations"
+    },
+
+    "SETTINGS_DEVICE": {
+        "name": "Name",
+        "id": "Id",
+        "port": "Port",
+        "ip": "IP",
+        "protocol": "Protocol",
+        "state": "State",
+        "actions": "Actions",
+        "device": "Device",
+        "edit": "Edit",
+        "delete": "Delete",
+        "create_new": "Create new",
+        "create": "Create",
+        "new_device_added": "New device added",
+        "new_device_error": "Could not add device",
+        "edit_device_edited": "Device edited",
+        "edit_device_error": "Could not edit device",
+        "device_removed": "Device removed",
+        "device_removed_error": "Could not remove device",
+        "test_connection": "Test connection",
+        "test_connection_error": "Error test conexion",
+        "test_connection_ok": "Test conexion OK"
+    },
+
+    "MATERIAL_MNG": {
+        "name": "Name",
+        "description": "Description",
+        "photo": "Photo",
+        "address": "Address",
+        "phone": "Phone",
+        "vat": "NIF/VAT",
+        "email": "Email",
+        "country": "Country",
+        "title": "Title",
+        "tech_sheet": "Tech Sheet",
+        "manufacturer" : "Manufacturer",
+        "provider": "Provider",
+        "made_in": "Made In",
+        "quantity": "Quantity",
+        "cod_art": "Art. Code",
+        "category": "Category",
+        "file": "File",
+        "detail": "Detail",
+        "precios_segun_proveedor": "Price according to supplier",
+        "price_iva_incl": "Price (TAX included)",
+        "create_new": "Create New",
+        "create": "Create",
+        "price_sin_iva": "Price (without TAX)",
+        "iva": "TAX",
+        "add_provider": "Add provider",
+        "product_created": "Product created",
+        "product_created_error": "Error while creating the product",
+        "manufacturer_created": "Manufacturer created",
+        "manufacturer_created_error": "Error while creating the manufacturer",
+        "provider_created": "Provider created",
+        "provider_created_error": "Error while creating the provider",
+        "category_created": "Category created",
+        "category_created_error": "Error while creating the category",
+        "provider_list": "List of providers ➨ Price",
+        "po_date": "Date of purchase",
+        "project_number": "Project",
+        "ref_number": "Reference",
+        "company": "Organization",
+        "add_row": "Add row",
+        "delete": "Delete",
+        "show_price": "Show price",
+        "select_item": "Select item...",
+        "select_provider": "Select provider...",
+        "select_country": "Select country...",
+        "select_category": "Select cateogry...",
+        "total_price": "Total price",
+        "total_amount": "Total",
+        "amount": "Amount",
+        "item": "Item",
+        "purchase_order_note_1": "Please let us know the delivery schedule as soon as possible.",
+        "purchase_order_note_2": "Thank you.",
+        "subtotal": "Subtotal",
+        "price": "Price",
+        "bill_to": "Bill to",
+        "ship_to": "Ship to",
+        "update": "Update",
+        "purchase_num": "Purchase",
+        "purchase_order_updated": "Purchase order updated",
+        "purchase_order_updated_error": "Error when updating a purchase order",
+        "purchase_order_created": "Purchase order created",
+        "purchase_order_created_error": "Error when creating a purchase order",
+        "item_list": "Item list",
+        "state": "State",
+        "notes": "Notes",
+        "add_note": "Add note",
+        "in_route": "In route",
+        "incomplete": "Incomplete",
+        "received": "Received",
+        "save": "Save",
+        "provider_updated": "Provider updated",
+        "provider_updated_error": "Error when updating a provider",
+        "you_want_to_remove_the_provider": "You want to delete the provider",
+        "provider_deleted": "Provider deleted",
+        "provider_delete_error": "Error when deleting a provider",
+        "manufacturer_updated_error": "Error when updating a manufacturer",
+        "manufacturer_updated": "Manufacturer updated",
+        "manaufacturer_deleted": "Manufacturer deleted",
+        "manufacturer_delete_error": "Error when deleting a manufacturer",
+        "you_want_to_remove_the_manufacturer": "You want to delete the provider",
+        "category_updated_error": "Error when updating a category",
+        "category_updated": "Category updated",
+        "category_deleted": "Category deleted",
+        "category_delete_error": "Error when deleting a category",
+        "you_want_to_remove_the_category": "You want to delete the category",
+        "edit_product": "Edit product",
+        "edit": "Edit",
+        "product_updated_error": "Error when updating a product",
+        "product_updated": "Product updated",
+        "product_deleted": "Product deleted",
+        "product_delete_error": "Error when deleting a product",
+        "you_want_to_remove_the_product": "You want to delete the product",
+        "crear": "Create",
+        "search": "Search",
+        "configuration": "Configuration",
+        "devices": "Devices",
+        "settings": "Settings",
+        "general_settings": "General Settings",
+        "monitoring_control": "Monitoring & Control",
+        "incidences": "Incidences",
+        "scada": "Scada",
+        "statistics": "Statistics",
+        "material_flow_control": "Material Flow Control",
+        "containers": "Containers",
+        "chutes": "Chutes",
+        "material_management": "Material Management",
+        "purchase_orders": "Purchase Orders",
+        "purchases": "Purchases",
+        "components_purchased": "Elements Purchased",
+        "providers": "Providers",
+        "products": "Products",
+        "product": "Product",
+        "components": "Elements",
+        "manufacturers": "Manufacturers",
+        "families": "Families",
+        "categories": "Categories",
+        "sales": "Sales",
+        "invoices": "Invoices",
+        "clients": "Clients",
+        "warehouse": "Warehouse",
+        "connections": "Connections",
+        "delete_title": "Delete",
+        "delete_question": "Are you sure you want to delete ",
+        "cancel": "Cancel",
+        "info": "Info",
+        "component": "Element",
+        "warehouse_location": "Warehouse locations",
+        "locations": "Locations",
+        "postal_code": "Postal code",
+        "city": "City",
+        "information": "Information",
+        "contact": "Contact",
+        "export": "Export",
+        "prices_provider": "Price per provider",
+        "view": "View"
+    }
+}

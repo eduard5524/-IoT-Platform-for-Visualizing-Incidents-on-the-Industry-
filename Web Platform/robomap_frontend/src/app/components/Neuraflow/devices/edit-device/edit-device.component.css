@@ -1,0 +1,46 @@
+.titles-detail-incidents {
+    border-bottom: double #282828;
+    padding: 10px;
+    color: #282828;
+}
+
+.title-detail-incidents {
+    background: #282828;
+    color: #FFF;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+}
+
+.mat-dialog-container {
+    overflow: hidden;
+}
+
+.textos-detail-incidents {
+    height: 250px;
+    overflow-y: scroll;
+}
+
+table.dataTable thead .sorting::before, table.dataTable thead .sorting_asc::before, table.dataTable thead .sorting_desc::before, table.dataTable thead .sorting_asc_disabled::before, table.dataTable thead .sorting_desc_disabled::before, table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after, table.dataTable thead .sorting_asc_disabled::after, table.dataTable thead .sorting_desc_disabled::after {
+    display: none;
+}
+
+.contenedor {
+    margin-top: -25px !important;
+    margin-left: -25px !important;
+    margin-right: -25px !important;
+}
+
+.contenedor-inf {
+    overflow-x: hidden;
+}
+
+.iconplus {
+    width: 25px;
+    cursor: pointer;
+}
+
+.closebutton {
+    width: 20px;
+    cursor: pointer;
+}

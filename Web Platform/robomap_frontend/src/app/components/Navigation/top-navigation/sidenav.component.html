@@ -1,0 +1,141 @@
+<!-- Sidenav Page. Top Navigation & Lateral. -->
+
+<div fxLayout="column" fxLayoutAlign="top center">
+    <!-- Lateral Navigation. Use any element to open the sidenav -->
+    <app-sidenav-neuraflow *ngIf="application == constants.APPLICATION_NEURAFLOW" (option)="switchOption($event)">
+    </app-sidenav-neuraflow>
+    <app-sidenav-neuracore *ngIf="application == constants.APPLICATION_NEURACORE"
+        (option)="switchOption($event)"></app-sidenav-neuracore>
+
+    <!-- Top Navigation -->
+    <mat-toolbar style="z-index:99;position:fixed;">
+        <!-- Robomap Logo goto Home Page. -->
+        <span (click)="goHome()">
+            <img class="p-2 logorobomaphead" style="width:50px;" src="../../../../assets/media/2022/logo/Robomap Logo White.ico" />
+        </span>
+        <span class="fill-remaining-space" fxLayout="row" fxLayoutAlign="left" fxLayoutGap="10px">
+        </span>
+
+        <!-- Configuration -->
+        <span fxLayout="row" fxLayoutAlign="center center">
+            <button mat-icon-button [matMenuTriggerFor]="admin">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </span>
+
+        <!-- Application Switch -->
+        <span fxLayout="row" fxLayoutAlign="center center">
+            <button mat-icon-button [matMenuTriggerFor]="apps">
+                <mat-icon>apps</mat-icon>
+            </button>
+        </span>
+
+        <!-- User Menu -->
+        <span fxLayout="row" fxLayoutAlign="center center">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar>
+
+    <!-- Configuration Function -->
+    <mat-menu #admin="matMenu">
+        <button class="" mat-menu-item (click)="switchOption(constants.OPTION_USER)">
+            <mat-icon>group</mat-icon>
+            <span>{{ 'DASHBOARD.users' | translate }}</span>
+        </button>
+
+        <button mat-menu-item (click)="switchOption(constants.OPTION_COMPANY)">
+            <mat-icon>apartment</mat-icon>
+            <span>{{ 'DASHBOARD.companies' | translate }}</span>
+        </button>
+
+        <button mat-menu-item (click)="switchOption(constants.OPTION_ROLE)">
+            <mat-icon>security</mat-icon>
+            <span>{{ 'DASHBOARD.roles' | translate }}</span>
+        </button>
+    </mat-menu>
+
+    <!-- Application Switch Function -->
+    <mat-menu #apps="matMenu">
+        <div class="pl-8 pr-8">
+            <div class="d-flex justify-content-around">
+                <div style="cursor:pointer;" class="icon-apps col-md-6 pt-3"
+                    (click)="switchApplication(constants.APPLICATION_NEURAFLOW)">
+                    <img class="app-switch-img" src="../../../../assets/media/2022/apps/neuraflow.png" style="width:25px;margin-bottom:5px" />
+                    <p class="app-switch-name">Neuraflow</p>
+                </div>
+                <!--
+                <div style="cursor:pointer;" class="icon-apps col-md-6 pt-3"
+                    (click)="switchApplication(constants.APPLICATION_NEURACORE)">
+                    <img src="assets/img/neuracore-icon.png" style="width:25px;margin-left:15px;margin-bottom:5px" />
+                    <p style="font-size:12px">NeuraCore</p>
+                </div>
+                -->
+            </div>
+        </div>
+
+    </mat-menu>
+
+    <!-- User Menu Function -->
+    <mat-menu #menu="matMenu">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon (click)="switchOption(constants.OPTION_USER_PROFILE)">account_circle</mat-icon>
+                </div>
+                <mat-card-subtitle>{{email}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+
+        <!-- Light Dark Mode Function -->
+        <button mat-menu-item>
+            <mat-icon class="light_mode">dark_mode</mat-icon>
+            <mat-icon (click)="toggleSkin()" class="light_mode">toggle_off</mat-icon>
+            <mat-icon class="d-none dark_mode">light_mode</mat-icon>
+            <mat-icon (click)="toggleSkin()" class="d-none dark_mode">toggle_on</mat-icon>
+        </button>
+
+        <!-- Languages Function -->
+        <button mat-menu-item [matMenuTriggerFor]="lang">
+            <mat-icon>translate</mat-icon>
+            <span>{{ 'DASHBOARD.lang' | translate }}</span>
+        </button>
+
+        <!-- Logout Function -->
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>reply</mat-icon>
+            <span>{{ 'DASHBOARD.exit' | translate }}</span>
+        </button>
+    </mat-menu>
+
+    <!-- Language Function -->
+    <mat-menu #lang="matMenu">
+        <button mat-menu-item>
+            <span (click)="switchLanguage('es')" [class.active]="currentLanguage() === 'es'" class="lang es">ES</span>
+        </button>
+        <button mat-menu-item>
+            <span (click)="switchLanguage('en')" [class.active]="currentLanguage() === 'en'" class="lang gb">EN</span>
+        </button>
+    </mat-menu>
+
+    <div fxFlex="grow" style="width: 100%">
+        <app-welcome-container *ngIf="option == constants.OPTION_WELCOME"></app-welcome-container>
+        <app-user-container *ngIf="option == constants.OPTION_USER" [action]="action" #user_container>
+        </app-user-container>
+        <app-companies-container *ngIf="option == constants.OPTION_COMPANY"></app-companies-container>
+        <app-roles-container *ngIf="option == constants.OPTION_ROLE"></app-roles-container>
+        <app-incidences *ngIf="option == constants.OPTION_INCIDENCES"></app-incidences>
+        <app-settings-devices *ngIf="option == constants.OPTION_SETTINGS_DEVICES"></app-settings-devices>
+        <app-purchase-order *ngIf="option == constants.OPTION_PURCHASE_ORDERS"></app-purchase-order>
+        <app-components *ngIf="option == constants.OPTION_PRODUCTS_COMPONENTS"></app-components>
+        <app-categories *ngIf="option == constants.OPTION_PRODUCTS_CATEGORIES"></app-categories>
+        <app-manufacturers *ngIf="option == constants.OPTION_PRODUCTS_MANUFACTURERS"></app-manufacturers>
+        <!--<app-families *ngIf="option == constants.OPTION_PRODUCTS_FAMILIES"></app-families>-->
+        <app-providers *ngIf="option == constants.OPTION_PURCHASES_PROVIDERS"></app-providers>
+        <app-components-purchased *ngIf="option == constants.OPTION_PURCHASES_COMPONENTS"></app-components-purchased>
+        <app-dashboard *ngIf="option == constants.OPTION_DASHBOARD"></app-dashboard>
+        <app-user-profile *ngIf="option == constants.OPTION_USER_PROFILE"></app-user-profile>
+        <app-locations *ngIf="option == constants.OPTION_WAREHOUSE_LOCATIONS"></app-locations>
+    </div>
+</div>

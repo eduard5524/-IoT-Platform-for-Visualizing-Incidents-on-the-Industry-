@@ -1,0 +1,35 @@
+<div class="contenedor">
+  <div class="row mb-5 title-detail-incidents">
+    <p class="w-100">
+      <b>{{'SETTINGS_DEVICE.device' | translate}}: {{name}}</b>
+      <img (click)="close()" class="closebutton mr-4 float-right" src="../../../../assets/img/close.png" />
+    </p>
+  </div>
+</div>
+
+<div class="contenedor-inf">
+
+  <div class="form-group row justify-content-center">
+    <span class="m-2">{{'SETTINGS_DEVICE.name' | translate}}:&nbsp;<input type="text" class="form-control" name="name"
+        id="name" value="{{name}}"></span>
+    <span class="m-2">{{'SETTINGS_DEVICE.ip' | translate}}:&nbsp;<input type="text" class="form-control" name="ip"
+        id="ip" value="{{ip}}"></span>
+    <span class="m-2">{{'SETTINGS_DEVICE.port' | translate}}:&nbsp;<input type="text" class="form-control" name="port"
+        id="port" value="{{port}}"></span>
+    <span class="m-2">{{'SETTINGS_DEVICE.protocol' | translate}}:&nbsp;<input type="text" class="form-control"
+        name="protocol" id="protocol" value="{{protocol}}"></span>
+    <span class="m-2">{{'SETTINGS_DEVICE.protocol' | translate}}:&nbsp;
+      <select class="form-control" name="state" id="state">
+        <option style="color:#55b52d" value="running" [selected]="state == 'running'">Running</option>
+        <option style="color:#e43c40" value="stopped" [selected]="state == 'stopped'">Stopped</option>
+      </select>
+    </span>
+  </div>
+  <input (click)="testConnection()" type="button" class="ml-3 mt-5 float-right btn btn-dark"
+    value="{{'SETTINGS_DEVICE.test_connection' | translate }}">
+    
+  <input (click)="editDevice()" type="button" class="mt-5 float-right btn btn-dark"
+    value="{{'SETTINGS_DEVICE.edit' | translate }}">
+
+  <input (click)="deleteDevice()" type="button" class="mt-5 mr-3 float-right btn btn-danger"
+    value="{{'SETTINGS_DEVICE.delete' | translate }}">

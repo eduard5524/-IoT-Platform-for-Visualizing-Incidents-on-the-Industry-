@@ -1,0 +1,12 @@
+<!-- Acknowledge Confirmation -->
+
+<h5 class="d-flex justify-content-center">{{'ACKNOW.are_you_sure_deactivate_all' | translate}}</h5>
+<div class="row mb-5 mt-5 d-flex justify-content-around">
+    <input (click)="acceptDeactivate()" type="button" class="w-25 btn btn-danger"
+    value="{{'ACKNOW.yes' | translate }}">
+    <div>&nbsp;</div>
+    <input (click)="declineDeactivate()" type="button" class="w-25 btn btn-secondary"
+    value="{{'ACKNOW.no' | translate }}">
+</div>
+
+<p class="d-flex justify-content-center">*{{'ACKNOW.deactivate_warning' | translate}}</p>

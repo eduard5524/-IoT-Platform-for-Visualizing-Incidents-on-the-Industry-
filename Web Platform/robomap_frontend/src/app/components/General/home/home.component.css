@@ -1,0 +1,20 @@
+.welcome-card{
+    max-width: 400px;
+    background-color: #FAFAFA;
+}
+
+.header-image {
+    background-image: url('../../../../assets/media/2022/logo/robomap_logo_black.png');
+    background-size: cover;
+}
+
+body{
+    overflow-y: hidden !important;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.main {
+    transition: margin-left .5s;
+    padding: 20px;
+    margin-top:100px;
+}

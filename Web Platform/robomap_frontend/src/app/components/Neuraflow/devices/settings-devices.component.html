@@ -1,0 +1,79 @@
+<!-- Devices Page -->
+
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'Neuraflow_Incidences.Monitor' | translate}} > {{'Neuraflow_Incidences.Incidences' | translate}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'Neuraflow_Incidences.Incidences' | translate}}</p>
+            <p class="app_description">You're visualizing the incidences screen.</p>
+        </div>
+        <mat-form-field style="float:right;font-size:12px">
+            <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+            <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+        </mat-form-field>
+    </div>
+
+    <hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+
+    <div fxFlexFill fxLayout="column">
+        <div fxFlex="grow">
+            <table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.ID_Incidence' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Description' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ip">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Device' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.ip}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="port">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Severity' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.port}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="protocol">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.State' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.protocol}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="state">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.State' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.state}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.State' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let device" (contextmenu)="onRightClick($event, alarm)">
+                        {{device.actions}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let alarm; columns: columnsToDisplay"></mat-row>
+            </table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+    </div>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+  <POU Name="MAIN" Id="{60fa3d12-34ec-437e-8034-144274a93eb4}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+
+VAR
+	bReconfig: BOOL := FALSE;
+	bInit: BOOL := false;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+A01_Init();]]></ST>
+    </Implementation>
+    <Action Name="A01_Init" Id="{cc4e678c-1e28-4d2f-8670-d10544b88eae}">
+      <Implementation>
+        <ST><![CDATA[IF NOT bInit OR bReconfig THEN 
+	bReconfig:= FALSE;
+			
+	OPC_UA.Alrm.n[1].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[1].Device:= '-1Q1';
+	OPC_UA.Alrm.n[1].Id:= '01920192';
+	OPC_UA.Alrm.n[1].Description:= 'Main Switch';
+	OPC_UA.Alrm.n[1].Severity:= DT_Incidence_Severity.Fatal;
+
+	OPC_UA.Alrm.n[2].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[2].Device:= '-5F1';
+	OPC_UA.Alrm.n[2].Id:= '02000200';
+	OPC_UA.Alrm.n[2].Description:= 'Surge Arrester';
+	OPC_UA.Alrm.n[2].Severity:= DT_Incidence_Severity.Error;
+
+	OPC_UA.Alrm.n[3].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[3].Device:= '-9F1';
+	OPC_UA.Alrm.n[3].Id:= '11001100';
+	OPC_UA.Alrm.n[3].Description:= 'Circuit Breaker (AS-interface Power Supply 1)';
+	OPC_UA.Alrm.n[3].Severity:= DT_Incidence_Severity.Fatal;
+	
+	OPC_UA.Alrm.n[4].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[4].Device:= '-9F2';
+	OPC_UA.Alrm.n[4].Id:= '31003100';
+	OPC_UA.Alrm.n[4].Description:= 'Photoeye Tripped';
+	OPC_UA.Alrm.n[4].Severity:= DT_Incidence_Severity.Fatal;
+
+	OPC_UA.Alrm.n[5].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[5].Device:= '-20F1';
+	OPC_UA.Alrm.n[5].Id:= '42004200';
+	OPC_UA.Alrm.n[5].Description:= 'Power Fuse (Power Distributor internal devices)';
+	OPC_UA.Alrm.n[5].Severity:= DT_Incidence_Severity.Fatal;
+	
+	OPC_UA.Alrm.n[6].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[6].Device:= '-20F2';
+	OPC_UA.Alrm.n[6].Id:= '02200220';
+	OPC_UA.Alrm.n[6].Description:= 'Ethercat Bus Communication Lost';
+	OPC_UA.Alrm.n[6].Severity:= DT_Incidence_Severity.Warning;
+
+	OPC_UA.Alrm.n[7].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[7].Device:= '-21F1';
+	OPC_UA.Alrm.n[7].Id:= '45674567';
+	OPC_UA.Alrm.n[7].Description:= 'Power Fuse (Power Distributor external devices)';
+	OPC_UA.Alrm.n[7].Severity:= DT_Incidence_Severity.Fatal;
+
+	OPC_UA.Alrm.n[8].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[8].Device:= '-22F1';
+	OPC_UA.Alrm.n[8].Id:= '32003200';
+	OPC_UA.Alrm.n[8].Description:= 'Photoeye Trigger';
+	OPC_UA.Alrm.n[8].Severity:= DT_Incidence_Severity.Error;
+
+	OPC_UA.Alrm.n[9].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[9].Device:= '-26K1';
+	OPC_UA.Alrm.n[9].Id:= '74837483';
+	OPC_UA.Alrm.n[9].Description:= 'FeedBack System (Area =CA1 & =CA2)';
+	OPC_UA.Alrm.n[9].Severity:= DT_Incidence_Severity.Fatal;
+
+	OPC_UA.Alrm.n[10].WareHouse:= '=MCP1';
+	OPC_UA.Alrm.n[10].Device:= '-24K1';
+	OPC_UA.Alrm.n[10].Id:= '38333833';
+	OPC_UA.Alrm.n[10].Description:= 'FeedBack System Delayed (Area =CA1 & =CA2)';
+	OPC_UA.Alrm.n[10].Severity:= DT_Incidence_Severity.Fatal;
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="MAIN">
+      <LineId Id="2040" Count="1" />
+      <LineId Id="1987" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.A01_Init">
+      <LineId Id="125" Count="0" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="131" Count="1" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="134" Count="55" />
+      <LineId Id="191" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

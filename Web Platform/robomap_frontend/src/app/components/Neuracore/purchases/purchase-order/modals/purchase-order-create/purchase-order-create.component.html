@@ -1,0 +1,310 @@
+<div class="contenedor">
+  <h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'MATERIAL_MNG.create' | translate }}</h1>
+  <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{ 'MATERIAL_MNG.edit' |
+    translate }}</h1>
+  <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{ 'MATERIAL_MNG.detail'
+    | translate }}</h1>
+</div>
+
+<mat-dialog-content>
+  <div style="padding:50px" id="print_this">
+    <!--PRIMERA FILA-->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+          <input matInput type="date" [disabled]="!create" name="po_date" id="po_date"
+            placeholder="{{'MATERIAL_MNG.po_date' | translate}}">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+          <input matInput type="text" [disabled]="!create" name="project_num" id="project_num"
+            placeholder="{{'MATERIAL_MNG.project_number' | translate}}">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+          <input matInput type="text" [disabled]="!create" name="ref_number" id="ref_number"
+            placeholder="{{'MATERIAL_MNG.ref_number' | translate}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <!--BILL TO FILA-->
+        <div class="row mb-4 mt-4">
+          <h5 class="col-md-12">{{'MATERIAL_MNG.bill_to' | translate}}</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="company_billto" id="company_billto"
+                placeholder="{{'MATERIAL_MNG.company' | translate}}" value="MIM Patchworkservice SL">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="address_billto" id="address_billto"
+                placeholder="{{'MATERIAL_MNG.address' | translate}}"
+                value="Can Fatjó dels Aurons, 08290 Cerdanyola del Vallès">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="country_billto" id="country_billto"
+                placeholder="{{'MATERIAL_MNG.country' | translate}}" value="Spain">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="vat_billto" id="vat_billto"
+                placeholder="{{'MATERIAL_MNG.vat' | translate}}" value="B66544529">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="phone_billto" id="phone_billto"
+                placeholder="{{'MATERIAL_MNG.phone' | translate}}" value="+34 936976790">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="email" [disabled]="create" name="email_billto" id="email_billto"
+                placeholder="{{'MATERIAL_MNG.email' | translate}}" value="info@mimpatchworkservice.com">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        <!--SHIP TO FILA-->
+        <div class="row mb-4 mt-4">
+          <h5 class="col-md-12">{{'MATERIAL_MNG.ship_to' | translate}}</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="!create" name="company_shipto" id="company_shipto"
+                placeholder="{{'MATERIAL_MNG.company' | translate}}">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="!create" name="address_shipto" id="address_shipto"
+                placeholder="{{'MATERIAL_MNG.address' | translate}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="!create" name="country_shipto" id="country_shipto"
+                placeholder="{{'MATERIAL_MNG.country' | translate}}">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="!create" name="vat_shipto" id="vat_shipto"
+                placeholder="{{'MATERIAL_MNG.vat' | translate}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="!create" name="phone_shipto" id="phone_shipto"
+                placeholder="{{'MATERIAL_MNG.phone' | translate}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="email" [disabled]="!create" name="email_shipto" id="email_shipto"
+                placeholder="{{'MATERIAL_MNG.email' | translate}}">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <!--PROVIDER FILA-->
+    <div class="row mb-4 mt-4">
+      <h5 class="col-md-12">{{'MATERIAL_MNG.provider' | translate}}</h5>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="company_provider" id="company_provider"
+                placeholder="{{'MATERIAL_MNG.company' | translate}}" value="{{provider.name}}">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="address_provider" id="address_provider"
+                placeholder="{{'MATERIAL_MNG.address' | translate}}" value="{{provider.address}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="country_provider" id="country_provider"
+                placeholder="{{'MATERIAL_MNG.country' | translate}}" value="{{provider.country}}">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="vat_provider" id="vat_provider"
+                placeholder="{{'MATERIAL_MNG.vat' | translate}}" value="{{provider.vat}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="text" [disabled]="create" name="phone_provider" id="phone_provider"
+                placeholder="{{'MATERIAL_MNG.phone' | translate}}" value="{{provider.phone}}">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+              <input matInput type="email" [disabled]="create" name="email_provider" id="email_provider"
+                placeholder="{{'MATERIAL_MNG.email' | translate}}" value="{{provider.email}}">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div id="provider_selector" class="col-md-5">
+        <mat-form-field floatLabel="never" [style.width.%]="100" [ngClass]="mobileClass('field')">
+          <mat-label>{{'MATERIAL_MNG.provider' | translate}}</mat-label>
+          <select (change)="providerChange($event)" matNativeControl name="provider" id="provider">
+            <option>{{'MATERIAL_MNG.select_item' | translate}}</option>
+            <option *ngFor="let provider of providers" value="{{provider.id}}">{{provider.name}}</option>
+          </select>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <hr>
+    <!--ITEMS FILA-->
+    <div class="row mb-4 mt-4">
+      <h5 class="col-md-6">Item list</h5>
+      <table id="myTable" class="table order-list table-striped">
+        <tbody id="row_items_body">
+          <tr id="row_items" class="row_origin">
+            <td>
+              <mat-form-field floatLabel="never" [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <mat-label>{{'MATERIAL_MNG.provider' | translate}}</mat-label>
+                <select matNativeControl [disabled]="!create" class="product_list" name="product_list"
+                  id="product_list">
+                  <option>{{'MATERIAL_MNG.select_item' | translate}}</option>
+                  <option *ngFor="let product of product_list"
+                    value="{{product.codigo_articulo}}|--|{{product.price}}|--|{{product.id}}">
+                    {{product.title}}</option>
+                </select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="text" [disabled]="create" name="reference" class="reference"
+                  placeholder="{{'MATERIAL_MNG.cod_art' | translate}}">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="number" [disabled]="!create" name="quantity" class="quantity"
+                  placeholder="{{'MATERIAL_MNG.quantity' | translate}}">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="text" [disabled]="create" name="unit_price" class="unit_price"
+                  placeholder="{{'MATERIAL_MNG.price' | translate}}">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="number" [disabled]="create" name="amount" class="amount"
+                  placeholder="{{'MATERIAL_MNG.amount' | translate}}">
+              </mat-form-field>
+            </td>
+            <td><a class="deleteRow"></a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="row_origin">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="number" [disabled]="create" name="totaliva" id="totaliva" class="totaliva"
+                  placeholder="{{'MATERIAL_MNG.iva' | translate}}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="row_origin">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="number" [disabled]="create" name="totalamount" id="totalamount"
+                  class="totalamount" placeholder="{{'MATERIAL_MNG.subtotal' | translate}}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="row_origin">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <mat-form-field [style.width.%]="100" [ngClass]="mobileClass('field')">
+                <input matInput type="number" [disabled]="create" name="totalamountiva" id="totalamountiva"
+                  class="totalamountiva" placeholder="{{'MATERIAL_MNG.total_amount' | translate}}">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="row_origin">
+            <td colspan="5" style="text-align: left;">
+                <button mat-raised-button type="button" id="addrow"
+                class="w-100 buttons-modal btn mt-2">{{'MATERIAL_MNG.add_row' | translate}}</button>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <hr>
+
+    <p>{{'MATERIAL_MNG.purchase_order_note_1' | translate}}</p>
+    <p>{{'MATERIAL_MNG.purchase_order_note_2' | translate}}</p>
+
+    <div>
+      <button mat-raised-button (click)="createPurchaseOrder()" type="button" id="createbtn"
+        class="buttons-modal float-right btn mt-2">{{'MATERIAL_MNG.create' | translate }}</button>
+    </div>
+
+  </div>
+
+</mat-dialog-content>

@@ -1,0 +1,119 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'MATERIAL_MNG.products' | translate}} > {{'MATERIAL_MNG.components' | translate}}</p>
+        <p class="option">{{'MATERIAL_MNG.material_management' | translate | uppercase}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'MATERIAL_MNG.components' | translate}}</p>
+            <p class="app_description">You're configuring the user roles of your Robomap application.</p>
+        </div>
+        <div class="col-md-6 float-right">
+            <button class="float-right mb-3 mt-3" (click)="openCreateProductComponent()" mat-raised-button>
+                <mat-icon>add</mat-icon>&nbsp;&nbsp;{{'MATERIAL_MNG.create' | translate | uppercase}}
+            </button>
+        </div>
+    </div>
+
+    <hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+
+    <mat-form-field style="float:right;font-size:12px">
+        <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+    </mat-form-field>
+
+    <div fxFlexFill fxLayout="column">
+
+        <div fxFlex="grow">
+
+            <mat-table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="check">
+                    <mat-header-cell *matHeaderCellDef style="color:transparent">-</mat-header-cell>
+                    <mat-cell *matCellDef="let product"><mat-checkbox></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.edit' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let product" (click)="openEditProductComponent(product)">
+                        <mat-icon style="color: #6200EE;">create</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.name' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let product" (contextmenu)="onRightClick($event, product)">
+                        {{product.title}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="codigo_articulo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.cod_art' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let product" (contextmenu)="onRightClick($event, product)">
+                        {{product.codigo_articulo}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="tech_sheet">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.tech_sheet' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let product" (contextmenu)="onRightClick($event, product)"> <a
+                            href="{{product.tech_sheet}}" target="_blank">{{'MATERIAL_MNG.tech_sheet' | translate}}</a>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="imageLink">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.photo' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let product" (contextmenu)="onRightClick($event, product)"> <img
+                            src="{{product.imageLink}}" height="50px"> </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="view">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.view' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let product" (click)="openViewProductComponent(product)">
+                        <mat-icon style="color: #6200EE;">visibility</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let product; columns: columnsToDisplay"></mat-row>
+            </mat-table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+
+    </div>
+
+</div>
+
+<app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+    <mat-menu #options="matMenu">
+        <ng-template matMenuContent let-item="item">
+            <span>
+                <button mat-menu-item (click)="openViewProductComponent(item)">
+                    <mat-icon>search</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openEditProductComponent(item)">
+                    <mat-icon>edit</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openDeleteProductComponent(item)">
+                    <mat-icon>delete</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.delete' | translate }}</span>
+                </button>
+            </span>
+        </ng-template>
+    </mat-menu>
+</app-context-menu>

@@ -1,0 +1,22 @@
+<div class="contenedor">
+  <div class="row mb-5 title-detail-incidents">
+    <p class="w-100">
+      <b>{{'SETTINGS_DEVICE.create_new' | translate}}</b>
+      <img (click)="close()" class="closebutton mr-4 float-right" src="../../../../assets/img/close.png" />
+    </p>
+  </div>
+</div>
+
+<div class="contenedor-inf">
+
+  <div class="form-group row d-flex justify-content-around">
+    <span>{{'SETTINGS_DEVICE.name' | translate}}:&nbsp;<input type="text" class="form-control mr-3" name="name" id="name" value=""></span>
+    <span>{{'SETTINGS_DEVICE.ip' | translate}}:&nbsp;<input type="text" class="form-control mr-3" name="ip" id="ip" value=""></span>
+    <span>{{'SETTINGS_DEVICE.port' | translate}}:&nbsp;<input type="text" class="form-control mr-3" name="port" id="port" value=""></span>
+    <span>{{'SETTINGS_DEVICE.protocol' | translate}}:&nbsp;<input type="text" class="form-control mr-3" name="protocol" id="protocol" value=""></span>
+  </div>
+
+  <input (click)="createDevice()" type="button" class="mt-5 float-right btn btn-dark"
+    value="{{'SETTINGS_DEVICE.create' | translate }}">
+
+</div>

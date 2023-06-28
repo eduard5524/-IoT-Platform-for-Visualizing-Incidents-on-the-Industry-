@@ -1,0 +1,80 @@
+<!-- Sidenav Neuraflow Page -->
+
+<!-- Content -->
+<mat-dialog-content>
+    <!-- Sidenav Component -->
+    <div id="sidenav" style="z-index:90;" class="sidenav">
+        <!-- Monitor Menu-->
+        <div class="menu" id="menu">
+            <p class="sidenav-menu ml-4">
+                <a id="menu_control_monitoring">
+                    <mat-icon class="mr-2">desktop_windows</mat-icon>
+                    <span class="text-sidenav d-none" style="vertical-align: super;"><b>{{'SIDENAV_neuraflow.monitor' | translate}}</b></span>
+                    <span class="arrow_drop d-none">
+                        <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+                        <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+                    </span>
+                </a>
+            </p>
+
+            <!-- Submenus of Monitor Menu -->
+            <div class="submenus" id="submenu_control_monitoring" style="display:none">
+                <!-- Metrics -->
+                <p class="sidenav-submenu ml-5 d-none">
+                    <a>
+                        <span class="text-sidenav-submenu d-none" >{{'SIDENAV_neuraflow.metrics' | translate}}</span>
+                    </a>
+                </p>
+
+                <!-- Submenu of Incidences -->
+                <p class="sidenav-submenu ml-5 d-none">
+                    <a (click)="onClicSidenav(constants.OPTION_INCIDENCES)">
+                        <span class="text-sidenav-submenu d-none">{{'SIDENAV.incidences' | translate}}</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!--Menu Settings-->
+        <div class="menu">
+            <p class="sidenav-menu ml-4">
+                <a id="menu_settings">
+                    <mat-icon class="mr-2">settings</mat-icon>
+                    <span class="text-sidenav d-none" style="vertical-align: super;"><b>{{'SIDENAV_neuraflow.manage' | translate}}</b></span>
+                    <span class="arrow_drop d-none">
+                        <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+                        <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+                    </span>
+                </a>
+            </p>
+
+            <!-- Submenus of Settings-->
+
+            <!-- Submenu of Devices-->
+            <div class="submenus" id="submenu_settings" style="display:none">
+                <p class="sidenav-submenu ml-5 d-none">
+                    <a (click)="onClicSidenav(constants.OPTION_SETTINGS_DEVICES)">
+                        <span class="text-sidenav-submenu d-none">{{'SIDENAV.devices' | translate}}</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!--Arrows Bottom Information & About-->
+        <div class="links_menu" >
+            <span class="p-4 about_link">
+                <mat-icon class="mr-2" style="color:#29A9EB;vertical-align: bottom;" (click)="openAbout()">info</mat-icon>
+                <span class="text-sidenav-about d-none" style="vertical-align: super;"><b>Learn.</b></span>
+            </span>
+        </div>
+
+        <!-- Arrows Open & Close-->
+        <div class="arrows" >
+            <span class="p-4">
+                <a href="javascript:void(0)" class="openbtn" (click)="openNav()">
+                    <mat-icon class="mr-2">{{message}}</mat-icon>
+                </a>
+            </span>
+        </div>
+    </div>
+</mat-dialog-content>

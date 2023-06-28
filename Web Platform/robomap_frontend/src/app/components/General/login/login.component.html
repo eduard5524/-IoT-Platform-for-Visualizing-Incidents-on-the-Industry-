@@ -1,0 +1,54 @@
+<!-- Main Box-->
+<div id="container-home" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="man-login-card">
+        <!-- Robomap Logo -->
+        <div id="container-head">
+            <div id="container-head-avatar">
+                <div class="mat-card-avatar">
+                    <img src="../../../../assets/media/2022/logo/robomap_logo_white.png">
+                </div>
+            </div>
+            <div id="container-head-titles">
+                <mat-card-title>{{ 'LOGIN.title_cloud' | translate }}</mat-card-title>
+                <mat-card-subtitle>{{ 'LOGIN.message' | translate }}</mat-card-subtitle>
+            </div>
+        </div>
+
+        <!-- Login -->
+        <mat-card-content>
+            <form autocomplete="off" (keyup.enter)="doLogin()">
+                <mat-form-field>
+                    <input matInput placeholder="{{'LOGIN.email' | translate }}" #user>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="{{ 'LOGIN.password' | translate }}" [type]="hide ? 'password' : 'text'"
+                        #password>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+
+                <div id="login-buttons-zone">
+                    <button class="mat-raised-button float-right mb-3 mt-3" (click)="doLogin()" mat-raised-button>
+                        {{ 'LOGIN.sign_in' | translate }}
+                    </button>
+                    <mat-slide-toggle>{{ 'LOGIN.remember' | translate }}</mat-slide-toggle>
+                </div>
+                <mat-error class="break">{{verToken}}</mat-error>
+            </form>
+
+            <!-- Register & More Information Box-->
+            <!--
+            <div id="login-links-zone">
+                <button type="button" mat-button color="accent" class="man-login-card">
+                    {{ 'LOGIN.free_up' | translate }}. {{ 'LOGIN.get_started' | translate }}
+                </button>
+                <button type="button" mat-button color="accent" class="man-login-card" (click)="goResetPassword()">
+                    {{ 'LOGIN.forgot' | translate }}
+                </button>
+                <button type="button" mat-button color="accent" class="man-login-card">
+                    {{ 'LOGIN.more_information' | translate }}
+                </button>
+            </div>
+            -->
+        </mat-card-content>
+    </mat-card>
+</div>

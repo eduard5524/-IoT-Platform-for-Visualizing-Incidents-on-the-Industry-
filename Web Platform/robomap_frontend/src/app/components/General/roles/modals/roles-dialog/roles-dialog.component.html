@@ -1,0 +1,76 @@
+<mat-dialog-content>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'DIALOG_ROLE.title_create' | translate }}
+    </h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{
+        'DIALOG_ROLE.title_edit' | translate }}</h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{
+        'DIALOG_ROLE.title_info' | translate }}</h1>
+    <div mat-dialog-content>
+        <div class="row">
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <input matInput type="text" required [disabled]="!edit" [(ngModel)]="role.name"
+                    placeholder="{{ 'DIALOG_ROLE.name' | translate }}">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-8" [ngClass]="mobileClass('field')">
+                <input matInput type="text" required [disabled]="!edit" [(ngModel)]="role.description"
+                    placeholder="{{ 'DIALOG_ROLE.description' | translate }}">
+            </mat-form-field>
+
+        </div>
+
+    </div>
+
+    <mat-divider class="mb-3 mt-3"></mat-divider>
+
+    <mat-list class="app-list">
+        <mat-list-item *ngFor="let module of modules">
+
+            <!--<mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <mat-label>{{'DIALOG_ROLE.module' | translate}}</mat-label>
+                <select matNativeControl [disabled]="!edit">
+                    <option *ngFor="let application of applications"
+                        [selected]="module.application == application.name" (ngModelChange)="onChangeApplication($event)">{{application.name}}
+                    </option>
+                </select>
+            </mat-form-field>-->
+
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <mat-label>{{'DIALOG_ROLE.module' | translate}}</mat-label>
+                <select matNativeControl [disabled]="!edit">
+                    <option *ngFor="let module_tmp of modules" [selected]="module == module_tmp">{{module_tmp.name}}
+                    </option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <mat-label>{{'DIALOG_ROLE.organization' | translate}}</mat-label>
+                <select matNativeControl [disabled]="!edit" (ngModelChange)="onChangeCompany($event, module)">
+                    <option *ngFor="let company of companies" [value]="company.id">{{company.name}}</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <select matNativeControl [disabled]="!edit" placeholder="{{ 'DIALOG_ROLE.permissions' | translate }}"
+                    [ngModel]="getRoleModulePermissionId(module)" (ngModelChange)="onChangeModule($event, module)">
+                    <option [value]="PERMISSION_READ">{{ 'DIALOG_ROLE.read' | translate }}</option>
+                    <option [value]="PERMISSION_WRITE">{{ 'DIALOG_ROLE.write' | translate }}</option>
+                </select>
+            </mat-form-field>
+            
+        </mat-list-item>
+    </mat-list>
+
+    <div style="float:right; margin-top:80px;" mat-dialog-actions>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">{{
+            'DIALOG_ROLE.cancel' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="edit && canWrite(MODULE_ROLES)" (click)="onCreateClick()">{{
+            'DIALOG_ROLE.save' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="!edit && canWrite(MODULE_ROLES)" (click)="onClickEdit()">{{
+            'DIALOG_ROLE.edit'
+            | translate }}</button>
+    </div>
+    
+</mat-dialog-content>

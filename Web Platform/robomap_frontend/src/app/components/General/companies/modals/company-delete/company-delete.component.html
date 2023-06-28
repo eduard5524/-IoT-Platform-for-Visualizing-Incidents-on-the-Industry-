@@ -1,0 +1,11 @@
+<h1 class="header-modal" mat-dialog-title>{{ 'DELETE_COMPANY.delete' | translate }} {{'DELETE_COMPANY.company' | translate}}</h1>
+<div mat-dialog-content>
+  <h4 class="mat-h4">{{ 'DELETE_COMPANY.question' | translate }} <b>{{ this.company.name }}</b> ?</h4>
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+  <button class="buttons-modal" mat-raised-button (click)="onNoClick()">{{ 'DELETE_COMPANY.cancel' | translate }}</button>
+  <button class="buttons-modal" mat-raised-button color="primary" (click)="onDeleteClick()">{{ 'DELETE_COMPANY.delete' | translate }}</button>
+</div>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+  <DUT Name="DT_Incidence_Severity" Id="{e7dc37d6-82b1-4329-a03b-2b8346fe6e72}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE DT_Incidence_Severity :
+(
+	Unknown := 0,
+	Warning	:= 1,
+	Error	:= 2,
+	Fatal	:= 3
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

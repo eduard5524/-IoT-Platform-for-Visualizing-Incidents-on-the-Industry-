@@ -1,0 +1,16 @@
+.full {
+    width: 95%;
+}
+
+.medium {
+    width: 45%;
+    margin-right: 5%;
+}
+
+.button-mobile {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 0px !important;
+}
+

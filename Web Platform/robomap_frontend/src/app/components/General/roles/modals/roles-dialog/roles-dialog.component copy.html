@@ -1,0 +1,100 @@
+<mat-dialog-content>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'DIALOG_ROLE.title_create' | translate }}
+    </h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{
+        'DIALOG_ROLE.title_edit' | translate }}</h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{
+        'DIALOG_ROLE.title_info' | translate }}</h1>
+    <div mat-dialog-content>
+        <mat-form-field [ngClass]="mobileClass('field')">
+            <input matInput type="text" required [disabled]="!edit" [(ngModel)]="role.name"
+                placeholder="{{ 'DIALOG_ROLE.name' | translate }}">
+        </mat-form-field>
+    </div>
+
+    <mat-divider class="mb-3 mt-3"></mat-divider>
+    <div id="original-permission-block">
+        <div class="row permission-block">
+            <div class="col-md-4">
+                <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+                    <mat-label>{{'DIALOG_ROLE.application' | translate}}</mat-label>
+                    <select matNativeControl name="application" class="mr-3">
+                        <option *ngFor="let application of applications" value="{{application.id}}">{{application.name}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+                    <mat-label>{{'DIALOG_ROLE.module' | translate}}</mat-label>
+                    <select matNativeControl name="module" class="mr-3">
+                        <option *ngFor="let module of modules" value="{{module.id}}">{{module.name}}</option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <!--  <mat-list class="app-list">
+                    <h3 mat-subheader>{{ 'DIALOG_ROLE.permissions' | translate }}</h3>
+                    <mat-list-item *ngFor="let module of modules">
+                        <mat-icon mat-list-icon>{{module.icon != null ? module.icon : 'view_module'}}</mat-icon>
+                        <h4 fxShow="false" fxShow.gt-sm mat-line>{{module.name}}</h4>
+                        <mat-form-field>
+                            <mat-select [disabled]="!edit" placeholder="{{ 'DIALOG_ROLE.mode' | translate }}"
+                                [ngModel]="getRoleModulePermissionId(module)" (ngModelChange)="onChangeModule($event, module)">
+                                <mat-option>{{ 'DIALOG_ROLE.none' | translate }}</mat-option>
+                                <mat-option [value]="PERMISSION_READ">{{ 'DIALOG_ROLE.read' | translate }}</mat-option>
+                                <mat-option [value]="PERMISSION_WRITE">{{ 'DIALOG_ROLE.write' | translate }}</mat-option>
+                                <mat-option [value]="PERMISSION_ADMIN">{{ 'DIALOG_ROLE.admin' | translate }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-list-item>
+                </mat-list> -->
+
+            <div class="col-md-4">
+                <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+                    <mat-label>{{'DIALOG_ROLE.permissions' | translate}}</mat-label>
+                    <select matNativeControl name="module" class="mr-3">
+                        <option>Read</option>
+                        <option>Write</option>
+                        <option>Admin</option>
+                    </select>
+                </mat-form-field>
+                <!--  <mat-form-field>
+                    <mat-label>{{'DIALOG_ROLE.permissions' | translate}}</mat-label>
+                    <mat-select [disabled]="!edit" placeholder="{{ 'DIALOG_ROLE.permissions' | translate }}"
+                        [ngModel]="getRoleModulePermissionId(module)" (ngModelChange)="onChangeModule($event, module)">
+                        <mat-option>{{ 'DIALOG_ROLE.none' | translate }}</mat-option>
+                        <mat-option [value]="PERMISSION_READ">{{ 'DIALOG_ROLE.read' | translate }}</mat-option>
+                        <mat-option [value]="PERMISSION_WRITE">{{ 'DIALOG_ROLE.write' | translate }}</mat-option>
+                        <mat-option [value]="PERMISSION_ADMIN">{{ 'DIALOG_ROLE.admin' | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="permission-clone">
+
+    </div>
+
+    <mat-divider class="mb-3 mt-3"></mat-divider>
+
+
+    <div class="row" style="float:right">
+        <button (click)="addPermissionBlock()" class="mt-3 mb-3 buttons-add" mat-mini-fab>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div style="float:right; margin-top:80px;" mat-dialog-actions>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">{{
+            'DIALOG_ROLE.cancel' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="edit && canWrite(MODULE_ROLES)" (click)="onCreateClick()">{{
+            'DIALOG_ROLE.save' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="!edit && canWrite(MODULE_ROLES)" (click)="onClickEdit()">{{
+            'DIALOG_ROLE.edit'
+            | translate }}</button>
+    </div>
+</mat-dialog-content>

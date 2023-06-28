@@ -1,0 +1,52 @@
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'MATERIAL_MNG.create' | translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{ 'MATERIAL_MNG.edit' |
+  translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{ 'MATERIAL_MNG.detail' |
+  translate }}</h1>
+<div mat-dialog-content>
+  <h5>{{ 'MATERIAL_MNG.information' | translate }}</h5>
+  <div class="row">
+    <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.name"
+        placeholder="{{ 'MATERIAL_MNG.name' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.vat"
+        placeholder="{{ 'MATERIAL_MNG.vat' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.address"
+        placeholder="{{ 'MATERIAL_MNG.address' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="col-md-3" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.country"
+        placeholder="{{ 'MATERIAL_MNG.country' | translate }}">
+    </mat-form-field>
+  </div>
+
+  <h5>{{ 'MATERIAL_MNG.contact' | translate }}</h5>
+  <div class="row">
+    <mat-form-field class="col-md-6" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.phone"
+        placeholder="{{ 'MATERIAL_MNG.phone' | translate }}">
+    </mat-form-field>
+    <mat-form-field class="col-md-6" [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="provider.email"
+        placeholder="{{ 'MATERIAL_MNG.email' | translate }}">
+    </mat-form-field>
+  </div>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">{{
+    'MATERIAL_MNG.cancel' | translate
+    }}</button>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="edit"
+    (click)="onCreateClick()">{{
+    'MATERIAL_MNG.save' | translate }}</button>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+    *ngIf="!edit && canWrite(MODULE_USERS)" (click)="onClickEdit()">{{ 'MATERIAL_MNG.edit' | translate }}</button>
+</div>

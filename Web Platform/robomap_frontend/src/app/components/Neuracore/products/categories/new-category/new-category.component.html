@@ -1,0 +1,30 @@
+<div class="contenedor">
+  <div class="row mb-5 title-detail-incidents">
+    <p class="w-100">
+      <b>{{'MATERIAL_MNG.create_new' | translate}}</b>
+      <img (click)="close()" class="closebutton mr-4 float-right" src="../../../../assets/img/close.png" />
+    </p>
+  </div>
+</div>
+
+<div class="contenedor-inf">
+  <!--PRIMERA FILA-->
+  <div class="mb-5 form-group row d-flex justify-content-around">
+    <span>{{'MATERIAL_MNG.name' | translate}}:&nbsp;
+      <input type="text" class="form-control" name="name" id="name" value="">
+    </span>
+      <span>{{'MATERIAL_MNG.description' | translate}}:&nbsp;
+        <textarea name="description" id="description" class="form-control" cols="30" rows="5"></textarea>
+      </span>
+      <span>{{'MATERIAL_MNG.photo' | translate}}:&nbsp;
+        <input id="photoupload" (change)="onPhotoChange($event)" class="form-control btn" type="file"
+          accept="image/png, image/jpeg, image/gif" />
+      </span>
+   
+  </div>
+  <!--SEGUNDA FILA-->
+
+  <input (click)="createCategory()" type="button" class="mt-5 float-right btn btn-dark"
+    value="{{'MATERIAL_MNG.create' | translate }}">
+
+</div>

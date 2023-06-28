@@ -1,0 +1,107 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'MATERIAL_MNG.warehouse' | translate}} > {{'MATERIAL_MNG.warehouse_location' |
+            translate}}
+        </p>
+        <p class="option">{{'MATERIAL_MNG.material_management' | translate | uppercase}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'MATERIAL_MNG.warehouse_location' | translate}}</p>
+            <p class="app_description">You're configuring the user roles of your Robomap application.</p>
+        </div>
+        <div class="col-md-6 float-right">
+            <button (click)="openCreateLocation()" class="mat-raised-button float-right mb-3 mt-3" mat-raised-button>
+                <mat-icon>add</mat-icon>&nbsp;&nbsp;{{'MATERIAL_MNG.create' | translate | uppercase}}
+            </button>
+        </div>
+    </div>
+
+    <hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+
+    <mat-form-field style="float:right;font-size:12px">
+        <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+    </mat-form-field>
+
+    <div fxFlexFill fxLayout="column">
+
+        <div fxFlex="grow">
+            <table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.name' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let warehouseLocation"
+                        (contextmenu)="onRightClick($event, warehouseLocation)">
+                        {{warehouseLocation.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.city' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let warehouseLocation"
+                        (contextmenu)="onRightClick($event, warehouseLocation)">
+                        {{warehouseLocation.city}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.address' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let warehouseLocation"
+                        (contextmenu)="onRightClick($event, warehouseLocation)">
+                        {{warehouseLocation.address}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="contact_phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.phone' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let warehouseLocation"
+                        (contextmenu)="onRightClick($event, warehouseLocation)"><a
+                            href="tel:{{warehouseLocation.phone}}">{{warehouseLocation.contact_phone}}</a></mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="contact_email">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.email' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let warehouseLocation"
+                        (contextmenu)="onRightClick($event, warehouseLocation)"><a
+                            href="mailto:{{warehouseLocation.contact_email}}">{{warehouseLocation.contact_email}}</a> </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let warehouseLocation; columns: columnsToDisplay"></mat-row>
+            </table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+
+    </div>
+
+</div>
+
+<app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+    <mat-menu #options="matMenu">
+        <ng-template matMenuContent let-item="item">
+            <span>
+                <button mat-menu-item (click)="openViewLocation(item)">
+                    <mat-icon>search</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openEditLocation(item)">
+                    <mat-icon>edit</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openDeleteLocation(item)">
+                    <mat-icon>delete</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.delete' | translate }}</span>
+                </button>
+            </span>
+        </ng-template>
+    </mat-menu>
+</app-context-menu>

@@ -1,0 +1,42 @@
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'MATERIAL_MNG.create' | translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{ 'MATERIAL_MNG.edit' |
+  translate }}</h1>
+<h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{ 'MATERIAL_MNG.detail' |
+  translate }}</h1>
+<div mat-dialog-content>
+
+  <mat-dialog-content>
+    <div class="pb-3 w-100">
+      <h5>{{'MATERIAL_MNG.information' | translate}}</h5>
+      <div class="mb-4">
+        <mat-form-field class="col-md-12 mr-3" [ngClass]="mobileClass('field')">
+          <select [disabled]="!edit" matNativeControl name="state" id="state"
+            placeholder="{{'MATERIAL_MNG.state' | translate}}">
+            <option [selected]="purchaseDetail.state == 0" value="0">{{'MATERIAL_MNG.in_route' | translate}}</option>
+            <option [selected]="purchaseDetail.state == 1" value="1">{{'MATERIAL_MNG.incomplete' | translate}}</option>
+            <option [selected]="purchaseDetail.state == 2" value="2">{{'MATERIAL_MNG.received' | translate}}</option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="col-md-12 mr-3" [ngClass]="mobileClass('field')">
+        <mat-label>{{'MATERIAL_MNG.notes' | translate}}</mat-label>
+        <textarea id="note" name="note" [disabled]="!edit" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5">
+          {{purchaseDetail.note}}</textarea>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">
+    {{ 'MATERIAL_MNG.cancel' | translate }}</button>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="edit"
+    (click)="save()" id="button_add">{{ 'MATERIAL_MNG.save' | translate }}</button>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary" *ngIf="!edit"
+    (click)="onClickEdit()">{{ 'MATERIAL_MNG.edit' | translate }}</button>
+</div>

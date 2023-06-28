@@ -1,0 +1,51 @@
+<mat-dialog-content>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == true">{{ 'USER_DIALOG.title_create' | translate }}
+    </h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == true">{{
+        'USER_DIALOG.title_edit' | translate }}</h1>
+    <h1 class="header-modal" mat-dialog-title *ngIf="this.create == false && this.edit == false">{{
+        'USER_DIALOG.title_info' | translate }}</h1>
+    <div mat-dialog-content>
+        <div class="row">
+            <mat-form-field class="col-md-6" [ngClass]="mobileClass('field')">
+                <input matInput type="text" required [disabled]="!edit" [(ngModel)]="user.name"
+                    placeholder="{{ 'USER_DIALOG.name' | translate }}">
+            </mat-form-field>
+            <mat-form-field class="col-md-6" [ngClass]="mobileClass('field')">
+                <input matInput type="text" required [disabled]="!edit" [(ngModel)]="user.surname"
+                    placeholder="{{ 'USER_DIALOG.surname' | translate }}">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <input matInput type="email" required [disabled]="!edit" [(ngModel)]="user.email"
+                    placeholder="{{ 'USER_DIALOG.email' | translate }}">
+            </mat-form-field>
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <input matInput type="tel" required [disabled]="!edit" [(ngModel)]="user.phone"
+                    placeholder="{{ 'USER_DIALOG.telephone' | translate }}">
+            </mat-form-field>
+            <mat-form-field class="col-md-4" [ngClass]="mobileClass('field')">
+                <mat-select placeholder="{{ 'USER_DIALOG.role' | translate }}" [(value)]="user.role_id"
+                    [disabled]="!edit">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div style="float:right; margin-top:80px;" mat-dialog-actions>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button (click)="onNoClick()">{{
+            'DIALOG_ROLE.cancel' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="edit && canWrite(MODULE_ROLES)" (click)="onCreateClick()">{{
+            'DIALOG_ROLE.save' | translate }}</button>
+        <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+            *ngIf="!edit && canWrite(MODULE_ROLES)" (click)="onClickEdit()">{{
+            'DIALOG_ROLE.edit' | translate }}</button>
+    </div>
+
+</mat-dialog-content>

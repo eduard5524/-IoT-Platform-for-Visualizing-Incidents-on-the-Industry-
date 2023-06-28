@@ -1,0 +1,43 @@
+<!-- Incidence Detail Page -->
+
+<!-- Title -->
+<div class="contenedor">
+    <div class="row mb-5 title-detail-incidents">
+        <p class="w-100">
+            <b>{{'DETAIL_MFC.detail' | translate}}: </b>
+            {{device}}, {{location}}
+            <img (click)="close()" class="closebutton mr-4 float-right" src="../../../../assets/img/close.png" />
+        </p>
+    </div>
+</div>
+
+<div class="contenedor-inf">
+    <div class="row">
+        <div class="col-md-6">
+            <h5 class="titles-detail-incidents">
+                {{'DETAIL_MFC.comments' | translate}} ({{count}})
+                <img (click)="showCommentDialog()" style="float:right"class="iconplus" src="../../../../assets/img/iconplus.png" />
+            </h5>
+
+            <div class="textos-detail-incidents">
+                <p *ngFor="let comment of comments" class="pb-3 border-bottom comentario">
+                    <b>{{comment.created_at}} - {{comment.username}}</b><br>
+                    {{comment.comment}}
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h5 class="titles-detail-incidents">{{'DETAIL_MFC.historical' | translate}} ({{count_historical}})</h5>
+            <div class="textos-detail-incidents">
+                <ul *ngFor="let historicalAlarm of historicalAlarms">
+                    <li class="hora">{{historicalAlarm.created_at}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <input (click)="showAcknowDialog()" type="button" class="mt-5 float-right btn btn-dark"
+        value="{{'DETAIL_MFC.acknow' | translate }}">
+
+</div>

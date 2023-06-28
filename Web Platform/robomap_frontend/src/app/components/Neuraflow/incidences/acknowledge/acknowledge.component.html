@@ -1,0 +1,7 @@
+<h5 class="d-flex justify-content-center">{{'ACKNOW.send_alarm_desactivation' | translate}} [{{location}}]</h5>
+<h5 class="d-flex justify-content-center">{{'ACKNOW.what_alarm' | translate}}*</h5>
+<input (click)="deactivateThis(idalarm)" type="button" class="mt-5 w-100 btn btn-warning"
+value="{{'ACKNOW.deactivate_this' | translate }} {{idalarm}} {{'ACKNOW.of_plc' | translate}}  [{{location}}]"><br>
+<input (click)="deactivateAll()" type="button" class="mb-5 mt-3 w-100 btn btn-danger"
+value="{{'ACKNOW.deactivate_all' | translate }}">
+<p class="d-flex justify-content-center">*{{'ACKNOW.deactivate_warning' | translate}}</p>

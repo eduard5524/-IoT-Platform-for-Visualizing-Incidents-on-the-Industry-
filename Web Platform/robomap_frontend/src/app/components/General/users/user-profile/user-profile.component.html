@@ -1,0 +1,40 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+
+  <div class="row float-left">
+    <div class="col-md-2">
+      <div class="mat-card-avatar"
+        style="background-size:cover;background-image:url('https://www.mimpatchworkservice.com/wp-content/uploads/2020/11/Eduard-Lecha-Puig.png');">
+      </div>
+    </div>
+    <div class="col-md-10">
+      <p class="application">{{'USERS.user_profile' | translate}}</p>
+      <p class="app_description">You're configuring the user roles of your Robomap application.</p>
+    </div>
+  </div>
+
+  <hr class="hrtop">
+
+  <div>
+    <mat-form-field [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="edit" [(ngModel)]="user.name"
+        placeholder="{{ 'USER_DIALOG.name' | translate }}">
+    </mat-form-field><br>
+    <mat-form-field [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="edit" [(ngModel)]="user.surname"
+        placeholder="{{ 'USER_DIALOG.surname' | translate }}">
+    </mat-form-field><br>
+    <mat-form-field [ngClass]="mobileClass('field')">
+      <input matInput type="email" required [disabled]="!edit" [(ngModel)]="user.email"
+        placeholder="{{ 'USER_DIALOG.email' | translate }}">
+    </mat-form-field><br>
+    <mat-form-field [ngClass]="mobileClass('field')">
+      <input matInput type="tel" required [disabled]="edit" [(ngModel)]="user.phone"
+        placeholder="{{ 'USER_DIALOG.telephone' | translate }}">
+    </mat-form-field><br>
+    <mat-form-field [ngClass]="mobileClass('field')">
+      <input matInput type="text" required [disabled]="!edit" [(ngModel)]="user.role_name"
+        placeholder="{{ 'USER_DIALOG.role' | translate }}">
+    </mat-form-field><br>
+  </div>
+
+</div>

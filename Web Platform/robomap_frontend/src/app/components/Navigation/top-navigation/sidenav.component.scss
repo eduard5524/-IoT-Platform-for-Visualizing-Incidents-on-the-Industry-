@@ -1,0 +1,4 @@
+@import '../../../../environments/theme';
+.active {
+    color: mat-color($my-app-accent);
+}

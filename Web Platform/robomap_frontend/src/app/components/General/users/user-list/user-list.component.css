@@ -1,0 +1,8 @@
+table {
+    width: 100%;
+}
+
+:host ::ng-deep .paginator-mobile .mat-paginator-range-label {
+    margin: 0px;
+}
+

@@ -1,0 +1,104 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.mat-toolbar {
+    color: #FFF !important;
+    background-color: #111111 !important;
+}
+
+.logorobomaphead {
+    width: 50px;
+}
+
+.logorobomaphead:hover{
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    cursor: pointer;
+    color: #E6E7E7;
+}
+
+.lang {
+    width: 100%;
+    height: 40px;
+    background-size: 26px 34px;
+    background-repeat: no-repeat;
+    background-position: 0 5px;
+    display: block;
+    margin: 0 3px;
+    padding-left: 38px;
+    filter: grayscale(100%);
+}
+
+.lang:hover {
+    filter: grayscale(0);
+}
+
+.active {
+    filter: grayscale(0);
+}
+
+.lang.es {
+    background-image: url('../../../../assets/media/2022/flags/es.png');
+}
+
+.lang.pt {
+    background-image: url('../../../../assets/media/2022/flags/por.png');
+}
+
+.lang.gb {
+    background-image: url('../../../../assets/media/2022/flags/gb.png');
+}
+
+.lang.fr {
+    background-image: url('../../../../assets/media/2022/flags/fr.png');
+}
+
+.example-container {
+    width: 400px;
+    height: 200px;
+    margin: 12px;
+    border: 1px solid #555;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+.mat-menu-item:hover{
+    background: #EAE2F5 !important;
+}
+
+.icon-apps{
+    padding-left: 30px;
+    padding-right: 60px;
+}
+
+.icon-apps:hover{
+    /*background: #EAE2F5 !important;*/
+    opacity: 60%;
+}
+
+.pl-8 pr-8{
+    text-align: center;
+}
+
+.app-switch-name{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    margin-left: -15px;
+}
+
+.menu {
+    background-color: white;
+}

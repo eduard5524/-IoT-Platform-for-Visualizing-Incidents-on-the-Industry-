@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ 'DELETE_USER.title' | translate }}</h1>
+<div mat-dialog-content>
+    <h4 class="mat-h4">{{ 'DELETE_USER.question' | translate }} {{ this.user.name }} ?</h4>
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">{{ 'DELETE_USER.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="onDeleteClick()">{{ 'DELETE_USER.delete' | translate }}</button>
+</div>

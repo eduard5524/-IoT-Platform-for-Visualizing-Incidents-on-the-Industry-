@@ -1,0 +1,11 @@
+<h1 class="header-modal" mat-dialog-title>{{ 'MATERIAL_MNG.delete_title' | translate }} {{'MATERIAL_MNG.purchase_orders' | translate}}</h1>
+<div mat-dialog-content>
+  <h5 class="mat-h4">{{ 'MATERIAL_MNG.delete_question' | translate }} <b>{{ this.purchaseorder.order_num }}</b> ?</h5>
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+  <button class="buttons-modal" mat-raised-button (click)="onNoClick()">{{ 'MATERIAL_MNG.cancel' | translate }}</button>
+  <button class="buttons-modal" mat-raised-button color="primary" (click)="onDeleteClick()">{{ 'MATERIAL_MNG.delete' | translate }}</button>
+</div>

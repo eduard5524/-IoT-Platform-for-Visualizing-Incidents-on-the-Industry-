@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
+  <DUT Name="DT_Incidences" Id="{7726c997-44d1-4637-8048-9aa9cef6a90a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE DT_Incidences :
+	{attribute 'OPC.UA.DA' := '1'}
+	{attribute 'OPC.UA.DA.StructuredType' := '1'}
+	STRUCT
+			n: ARRAY[1..10] OF DT_Incidence; 
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

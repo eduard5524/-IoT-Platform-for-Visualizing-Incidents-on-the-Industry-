@@ -1,0 +1,102 @@
+<h1 class="header-modal" mat-dialog-title>{{ 'MATERIAL_MNG.create' | translate }}</h1>
+<div mat-dialog-content>
+  <!--PRIMERA FILA-->
+  <div class="mb-4">
+    <h5>{{ 'MATERIAL_MNG.information' | translate }}</h5>
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <input matInput type="text" name="title" id="title" placeholder="{{'MATERIAL_MNG.name' | translate}}">
+    </mat-form-field>
+
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{'MATERIAL_MNG.category' | translate}}</mat-label>
+      <select matNativeControl name="category" id="category" class="mr-3">
+        <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <input name="code" id="code" matInput type="text" placeholder="{{'MATERIAL_MNG.cod_art' | translate}}">
+    </mat-form-field>
+  </div>
+  <!--PRIMERA FILA SUB-->
+  <div class="mb-4">
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{'MATERIAL_MNG.made_in' | translate}}</mat-label>
+      <select matNativeControl name="madeIn" id="madeIn" class="mr-3">
+        <option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{'MATERIAL_MNG.manufacturer' | translate}}</mat-label>
+      <select matNativeControl name="manufacturer" id="manufacturer" class="mr-3">
+        <option *ngFor="let manufacturer of manufacturers" value="{{manufacturer.id}}">{{manufacturer.name}}</option>
+      </select>
+    </mat-form-field>
+  </div>
+  <!--SEGUNDA FILA-->
+  <div class="mb-4">
+    <div class="col-md-6">
+      <mat-label style="color:rgba(0, 0, 0, 0.38);font-size:12px;">
+        {{'MATERIAL_MNG.tech_sheet' | translate}}
+      </mat-label>
+      <input class="buttons-modal" style="font-size:12px" id="fileupload" (change)="onFileChange($event)" class="form-control btn" type="file"
+        accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf" />
+    </div>
+    <div class="col-md-6">
+      <mat-label style="color:rgba(0, 0, 0, 0.38);font-size:12px;">
+        {{'MATERIAL_MNG.photo' | translate}}
+      </mat-label>
+      <input class="buttons-modal" style="font-size:12px" id="photoupload" (change)="onPhotoChange($event)" class="form-control btn"
+        type="file" accept="image/*" />
+    </div>
+  </div>
+  <!--TERCERA FILA-->
+  <div clas="mb-4">
+    <h5>{{ 'MATERIAL_MNG.prices_provider' | translate }}</h5>
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{'MATERIAL_MNG.provider' | translate}}</mat-label>
+      <select matNativeControl name="provider" id="provider" class="mr-3">
+        <option *ngFor="let provider of providers" value="{{provider.id}}">{{provider.name}}</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <input name="price" id="price" matInput type="text" placeholder="{{'MATERIAL_MNG.price_sin_iva' | translate}}">
+    </mat-form-field>
+
+    <mat-form-field class="mr-3" [ngClass]="mobileClass('field')">
+      <input name="iva" id="iva" matInput type="text" placeholder="{{'MATERIAL_MNG.iva' | translate}}">
+    </mat-form-field>
+
+    <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+          (click)="addProvider()">{{'MATERIAL_MNG.add_provider' | translate }}</button>
+  </div>
+  <!--CUARTA FILA-->
+  <div>
+    <mat-form-field class="col-md-12 mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{ 'MATERIAL_MNG.prices_provider' | translate }}</mat-label>
+      <textarea name="provider_list" id="provider_list" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5">
+        {{text}}</textarea>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <h5>{{ 'MATERIAL_MNG.description' | translate }}</h5>
+    <mat-form-field class="col-md-12 mr-3" [ngClass]="mobileClass('field')">
+      <mat-label>{{'MATERIAL_MNG.description' | translate}}</mat-label>
+      <textarea name="description" id="description" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5">
+        </textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div style="float:right" mat-dialog-actions>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button
+    (click)="onNoClick()">{{ 'MATERIAL_MNG.cancel' | translate }}</button>
+  <button class="buttons-modal" [ngClass]="mobileClass('button')" mat-raised-button color="primary"
+    (click)="createProduct()">{{ 'MATERIAL_MNG.save' | translate }}</button>
+</div>

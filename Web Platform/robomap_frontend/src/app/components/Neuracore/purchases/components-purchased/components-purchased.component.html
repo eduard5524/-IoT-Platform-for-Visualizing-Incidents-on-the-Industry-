@@ -1,0 +1,135 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'MATERIAL_MNG.purchases' | translate}} > {{'MATERIAL_MNG.components_purchased' |
+            translate}}</p>
+        <p class="option">{{'MATERIAL_MNG.material_management' | translate | uppercase}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'MATERIAL_MNG.components_purchased' | translate}}</p>
+            <p class="app_description">You're configuring the user roles of your Robomap application.</p>
+        </div>
+        <div class="col-md-6 float-right">
+        </div>
+    </div>
+
+    <hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+    
+    <mat-form-field style="float:right;font-size:12px">
+        <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+    </mat-form-field>
+
+    <div fxFlexFill fxLayout="column">
+
+        <div fxFlex="grow">
+            <table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="check">
+                    <mat-header-cell *matHeaderCellDef style="color:transparent">-</mat-header-cell>
+                    <mat-cell *matCellDef="let purchaseorder"><mat-checkbox></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.edit' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let purchaseorder" (click)="openEditComponentPurchased(purchaseorder)">
+                        <mat-icon style="color: #6200EE;">create</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="component">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.name' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.component}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ref_component">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.cod_art' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.ref_component}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="order_num">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.purchase_num' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.order_num}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="project_num">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.project_number' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.project_num}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="provider">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.provider' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.provider}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.quantity' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        {{purchasedetail.quantity}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="state">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.state' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let purchasedetail" (contextmenu)="onRightClick($event, purchasedetail)">
+                        <span *ngIf="purchasedetail.state == 0">{{'MATERIAL_MNG.in_route' | translate}}</span>
+                        <span *ngIf="purchasedetail.state == 1">{{'MATERIAL_MNG.incomplete' | translate}}</span>
+                        <span *ngIf="purchasedetail.state == 2">{{'MATERIAL_MNG.received' | translate}}</span>
+                    </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="view">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.view' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let purchaseorder" (click)="openViewComponentPurchased(purchaseorder)">
+                        <mat-icon style="color: #6200EE;">visibility</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let purchasedetail; columns: columnsToDisplay"></mat-row>
+            </table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+
+    </div>
+
+</div>
+
+<app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+    <mat-menu #options="matMenu">
+        <ng-template matMenuContent let-item="item">
+            <span>
+                <button mat-menu-item (click)="openViewComponentPurchased(item)">
+                    <mat-icon>search</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openEditComponentPurchased(item)">
+                    <mat-icon>edit</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                </button>
+            </span>
+        </ng-template>
+    </mat-menu>
+</app-context-menu>

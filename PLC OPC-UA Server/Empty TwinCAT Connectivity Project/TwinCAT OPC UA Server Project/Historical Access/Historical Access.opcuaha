@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HistoryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HistoryController>
+    <HistoryAdapter Type="Volatile" Id="0" File="" Server="" Database="" InsertionQueueSize="3500" User="" Password="" />
+  </HistoryController>
+  <HistoryNodes />
+</HistoryConfig>

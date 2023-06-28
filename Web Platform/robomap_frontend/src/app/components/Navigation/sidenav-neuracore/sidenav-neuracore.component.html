@@ -1,0 +1,153 @@
+<mat-dialog-content>
+  <!--SIDENAV-->
+  <div id="sidenav" style="z-index:90;margin-top:19px;" class="sidenav">
+    <!--MENU DASHBOARD-->
+    <div class="menu">
+      <p class="sidenav-menu ml-4">
+        <a id="menu_dashboard" (click)="onClicSidenav(constants.OPTION_DASHBOARD)">
+          <mat-icon class="mr-3">speed</mat-icon>
+          <span class="text-sidenav d-none"
+            style="vertical-align: super;"><b>{{'SIDENAV.dashboard' | translate}}</b></span>
+        </a>
+      </p>
+    </div>
+    <!--/MENU DASHBOARD-->
+    <!--MENU PURCHASES-->
+    <div class="menu">
+      <p class="sidenav-menu ml-4">
+        <a id="menu_purchases">
+          <mat-icon class="mr-3">shopping_cart</mat-icon>
+          <span class="text-sidenav d-none"
+            style="vertical-align: super;"><b>{{'SIDENAV.purchases' | translate}}</b></span>
+          <span class="arrow_drop d-none">
+            <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+            <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+          </span>
+        </a>
+      </p>
+      <div class="submenus" id="submenu_purchases" style="display:none">
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PURCHASE_ORDERS)">
+            <span class="text-sidenav d-none"
+              style="vertical-align: super;">{{'SIDENAV.purchase_orders' | translate}}</span>
+          </a>
+        </p>
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PURCHASES_COMPONENTS)">
+            <span class="text-sidenav d-none"
+              style="vertical-align: super;">{{'SIDENAV.components_purchased' | translate}}</span>
+          </a>
+        </p>
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PURCHASES_PROVIDERS)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.providers' | translate}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <!--/MENU PURCHASES-->
+    <!--MENU PRODUCTS-->
+    <div class="menu">
+      <p class="sidenav-menu ml-4">
+        <a id="menu_products">
+          <mat-icon class="mr-3">widgets</mat-icon>
+          <span class="text-sidenav d-none"
+            style="vertical-align: super;"><b>{{'SIDENAV.products' | translate}}</b></span>
+          <span class="arrow_drop d-none">
+            <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+            <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+          </span>
+        </a>
+      </p>
+      <div class="submenus" id="submenu_products" style="display:none">
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PRODUCTS_COMPONENTS)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.components' | translate}}</span>
+          </a>
+        </p>
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PRODUCTS_MANUFACTURERS)">
+            <span class="text-sidenav d-none"
+              style="vertical-align: super;">{{'SIDENAV.manufacturers' | translate}}</span>
+          </a>
+        </p>
+      <!--<p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PRODUCTS_FAMILIES)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.families' | translate}}</span>
+          </a>
+        </p>-->
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PRODUCTS_CATEGORIES)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.categories' | translate}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <!--/MENU PRODUCTS-->
+    <!--MENU SALES-->
+    <div class="menu">
+      <p class="sidenav-menu ml-4">
+        <a id="menu_sales">
+          <mat-icon class="mr-3">monetization_on</mat-icon>
+          <span class="text-sidenav d-none" style="vertical-align: super;"><b>{{'SIDENAV.sales' | translate}}</b></span>
+          <span class="arrow_drop d-none">
+            <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+            <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+          </span>
+        </a>
+      </p>
+      <div class="submenus" id="submenu_sales" style="display:none">
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PURCHASE_ORDERS)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.invoices' | translate}}</span>
+          </a>
+        </p>
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_PURCHASES_PROVIDERS)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.clients' | translate}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <!--/MENU SALES-->
+    <!--MENU WAREHOUSE-->
+    <div class="menu">
+      <p class="sidenav-menu ml-4">
+        <a id="menu_warehouse">
+          <mat-icon class="mr-3">home_work</mat-icon>
+          <span class="text-sidenav d-none"
+            style="vertical-align: super;"><b>{{'SIDENAV.warehouse' | translate}}</b></span>
+          <span class="arrow_drop d-none">
+            <mat-icon class="mr-3 arrow_dropdown float-right">arrow_drop_down</mat-icon>
+            <mat-icon class="mr-3 arrow_dropup float-right d-none">arrow_drop_up</mat-icon>
+          </span>
+        </a>
+      </p>
+      <div class="submenus" id="submenu_warehouse" style="display:none">
+        <p class="sidenav-submenu ml-5 d-none">
+          <a (click)="onClicSidenav(constants.OPTION_WAREHOUSE_LOCATIONS)">
+            <span class="text-sidenav d-none" style="vertical-align: super;">{{'SIDENAV.locations' | translate}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <!--/MENU WAREHOUSE-->
+    <!--ARROWS-->
+    <div class="links_menu d-none">
+      <span class="p-4 help_link">
+        <b style="color:#6200EE;" (click)="helpModal()">Click here</b> to redirect to the Help Center of Material Flow Control application.
+      </span>
+      <span class="p-4 about_link" (click)="aboutModal()">
+        <mat-icon style="color:#29A9EB;vertical-align: bottom;">info</mat-icon> About this version.
+      </span>
+    </div>
+    <a href="javascript:void(0)" class="openbtn" (click)="openNav()">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </a>
+    <a href="javascript:void(0)" class="closebtn d-none" (click)="closeNav()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </a>
+    <!--/ARROWS-->
+  </div>
+  <!--/SIDENAV-->
+</mat-dialog-content>

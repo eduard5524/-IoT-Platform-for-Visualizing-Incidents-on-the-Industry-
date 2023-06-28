@@ -1,0 +1,44 @@
+
+
+  a {
+    color: #6c4897;
+  }
+
+  .header-modal {
+    border-left: solid 5px #BB86FC;
+    border-radius: 2px;
+    padding-left: 10px;
+    font-size: 23px;
+    font-weight: bold;
+  }
+
+  .mat-raised-button {
+    color: #fff;
+    background: #945ed6;
+    border-radius: 100px;
+    width: 5px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .mat-raised-button:hover {
+    opacity: 60%;
+  }
+
+  .mat-dialog-content {
+    display: inline;
+    margin: 0 0px;
+    padding: 0 px;
+    overflow: auto;
+  }
+
+  .mat-dialog-actions {
+    padding: 8px 0;
+    display: inline-block;
+    flex-wrap: wrap;
+    min-height: 52px;
+    align-items: center;
+    margin-bottom: -24px;
+    width: 100%;
+    text-align: right;
+  }

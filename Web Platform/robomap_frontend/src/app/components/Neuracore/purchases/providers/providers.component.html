@@ -1,0 +1,133 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'MATERIAL_MNG.purchases' | translate}} > {{'MATERIAL_MNG.providers' | translate}}</p>
+        <p class="option">{{'MATERIAL_MNG.material_management' | translate | uppercase}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'MATERIAL_MNG.providers' | translate}}</p>
+            <p class="app_description">You're configuring the user roles of your Robomap application.</p>
+        </div>
+        <div class="col-md-6 float-right">
+            <button class="float-right mb-3 mt-3" (click)="openCreateProvider()" mat-raised-button>
+                <mat-icon>add</mat-icon>&nbsp;&nbsp;{{'MATERIAL_MNG.create' | translate | uppercase}}
+            </button>
+        </div>
+    </div>
+
+    <hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+    
+    <mat-form-field style="float:right;font-size:12px">
+        <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+    </mat-form-field>
+
+    <div fxFlexFill fxLayout="column">
+
+        <div fxFlex="grow">
+            <table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="check">
+                    <mat-header-cell *matHeaderCellDef style="color:transparent">-</mat-header-cell>
+                    <mat-cell *matCellDef="let provider"><mat-checkbox></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.edit' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (click)="openEditProvider(provider)">
+                        <mat-icon style="color: #6200EE;">create</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.name' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)">
+                        {{provider.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="vat">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.vat' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)">
+                        {{provider.vat}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.address' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)">
+                        {{provider.address}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="country">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.country' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)">
+                        {{provider.country}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.phone' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)"> <a
+                            href="tel:{{provider.phone}}">{{provider.phone}}</a>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.email' | translate}}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (contextmenu)="onRightClick($event, provider)"><a
+                            href="mailto:{{provider.email}}">{{provider.email}}</a>
+                    </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="view">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.view' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let provider" (click)="openViewProvider(provider)">
+                        <mat-icon style="color: #6200EE;">visibility</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let provider; columns: columnsToDisplay"></mat-row>
+            </table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+
+    </div>
+
+</div>
+
+<app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+    <mat-menu #options="matMenu">
+        <ng-template matMenuContent let-item="item">
+            <span>
+                <button mat-menu-item (click)="openViewProvider(item)">
+                    <mat-icon>search</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openEditProvider(item)">
+                    <mat-icon>edit</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="openDeleteProvider(item)">
+                    <mat-icon>delete</mat-icon>
+                    <span>{{ 'MATERIAL_MNG.delete' | translate }}</span>
+                </button>
+            </span>
+        </ng-template>
+    </mat-menu>
+</app-context-menu>

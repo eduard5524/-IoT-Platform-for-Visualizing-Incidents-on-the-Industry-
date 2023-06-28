@@ -1,0 +1,81 @@
+.main-column {
+    overflow: hidden;
+}
+
+.companies-card {
+    top: 5%;
+    width: 40%;
+    height: 85vh;
+}
+
+.companies-card-mobile {
+    top: 5%;
+    height: 90vh;
+    vertical-align: middle;
+}
+
+.companies-table {
+    width: 100%; /* Of parent */
+}
+
+.mat-card-content {
+    max-height: 55%;
+    min-height: 40vh;
+    overflow: auto;
+    margin-bottom: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.card-image {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.card-title {
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    width: 16em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.mat-header-row {
+    display: none;
+}
+
+.actions-section {
+    position: absolute;
+    bottom: 12px;
+}
+
+.actions-section-mobile {
+    position: absolute;
+    bottom: 12px;
+    left: 25%;
+}
+
+.create-button {
+    margin-top: 12px;
+}
+
+:host ::ng-deep .mat-divider-horizontal {
+    bottom: 64px;
+}
+
+.create-icon {
+    margin-bottom: 4px;
+    margin-right: 10px;
+    color: grey;
+}
+
+.mat-row:hover {
+    background-color: #FAF8F8;
+    cursor: pointer;
+}
+

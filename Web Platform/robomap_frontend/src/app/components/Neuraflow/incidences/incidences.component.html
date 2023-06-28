@@ -1,0 +1,179 @@
+<div class="main pr-5 pt-2 pb-3 w-100" style="padding-left: 140px;">
+    <div clarr="row">
+        <p class="breadcrumbs">{{'Neuraflow_Incidences.Monitor' | translate}} > {{'Neuraflow_Incidences.Incidences' | translate}}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 float-left">
+            <p class="application">{{'Neuraflow_Incidences.Incidences' | translate}}</p>
+            <p class="app_description">You're visualizing the incidences screen.</p>
+        </div>
+        <mat-form-field style="float:right;font-size:12px">
+            <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+            <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+        </mat-form-field>
+    </div>
+
+    <!-- Functions. -->
+    <!--<hr class="hrtop">
+    <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+    <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+    <mat-icon>share</mat-icon>&nbsp;&nbsp;
+    <hr class="hrbottom">
+    -->
+
+    <!-- Search. -->
+    <!--
+    <mat-form-field style="float:right;font-size:12px">
+        <mat-icon style="margin-right:15px" matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="{{'MATERIAL_MNG.search' | translate}}" class="search-input">
+    </mat-form-field>
+    -->
+
+    <!-- Table. -->
+    <!--
+    <div fxFlexFill fxLayout="column">
+        <div fxFlex="grow">
+            <table style="width:100%" mat-table [dataSource]="datatable" matSort>
+                <ng-container matColumnDef="check">
+                    <mat-header-cell *matHeaderCellDef style="color:transparent">-</mat-header-cell>
+                    <mat-cell *matCellDef="let alarms"><mat-checkbox></mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.edit' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let alarms" (click)="openEditManufacturer(manufacturer)">
+                        <mat-icon style="color: #6200EE;">create</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{'MATERIAL_MNG.name' | translate}} </mat-header-cell>
+                    <mat-cell *matCellDef="let alarms" (contextmenu)="onRightClick($event, manufacturer)">
+                        {{manufacturer.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="view">
+                    <mat-header-cell *matHeaderCellDef>{{'MATERIAL_MNG.view' | translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let alarms" (click)="openViewManufacturer(manufacturer)">
+                        <mat-icon style="color: #6200EE;">visibility</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let alarms; columns: columnsToDisplay"></mat-row>
+            </table>
+        </div>
+
+        <div fxFlex fxLayoutAlign="center end">
+            <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                (page)="pageEvent = handlePage($event)">
+            </mat-paginator>
+        </div>
+    </div>
+    -->
+
+    <!--  -->
+    <!--
+    <app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+        <mat-menu #options="matMenu">
+            <ng-template matMenuContent let-item="item">
+                <span>
+                    <button mat-menu-item (click)="openViewManufacturer(item)">
+                        <mat-icon>search</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                    </button>
+                    <button mat-menu-item (click)="openEditManufacturer(item)">
+                        <mat-icon>edit</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                    </button>
+                    <button mat-menu-item (click)="openDeleteManufacturer(item)">
+                        <mat-icon>delete</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.delete' | translate }}</span>
+                    </button>
+                </span>
+            </ng-template>
+        </mat-menu>
+    </app-context-menu>
+    -->
+
+
+        <hr class="hrtop">
+        <mat-icon>autorenew</mat-icon>&nbsp;&nbsp;
+        <mat-icon>delete</mat-icon>&nbsp;&nbsp;
+        <mat-icon>share</mat-icon>&nbsp;&nbsp;
+        <hr class="hrbottom">
+
+
+
+
+        <div fxFlexFill fxLayout="column">
+            <div fxFlex="grow">
+                <table style="width:100%" mat-table [dataSource]="dataSource" matSort>
+                    <ng-container matColumnDef="id_alarm">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.ID_Incidence' | translate}} </mat-header-cell>
+                        <mat-cell *matCellDef="let alarm" (contextmenu)="onRightClick($event, alarm)">
+                            {{alarm.id_alarm}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Description' | translate}} </mat-header-cell>
+                        <mat-cell *matCellDef="let alarm" (contextmenu)="onRightClick($event, alarm)">
+                            {{alarm.description}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="device">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Device' | translate}} </mat-header-cell>
+                        <mat-cell *matCellDef="let alarm" (contextmenu)="onRightClick($event, alarm)">
+                            {{alarm.device}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="location">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.Severity' | translate}} </mat-header-cell>
+                        <mat-cell *matCellDef="let alarm" (contextmenu)="onRightClick($event, alarm)">
+                            {{alarm.location}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="state">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Neuraflow_Incidences.State' | translate}} </mat-header-cell>
+                        <mat-cell *matCellDef="let alarm" (contextmenu)="onRightClick($event, alarm)">
+                            {{alarm.state}}</mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                    <mat-row *matRowDef="let alarm; columns: columnsToDisplay"></mat-row>
+                </table>
+            </div>
+
+            <div fxFlex fxLayoutAlign="center end">
+                <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[25,50,100,150]"
+                    [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage"
+                    (page)="pageEvent = handlePage($event)">
+                </mat-paginator>
+            </div>
+        </div>
+
+<!--
+    <app-context-menu [matMenuTriggerFor]="options" #contextMenu>
+        <mat-menu #options="matMenu">
+            <ng-template matMenuContent let-item="item">
+                <span>
+                    <button mat-menu-item (click)="openViewManufacturer(item)">
+                        <mat-icon>search</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.detail' | translate }}</span>
+                    </button>
+                    <button mat-menu-item (click)="openEditManufacturer(item)">
+                        <mat-icon>edit</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.edit' | translate }}</span>
+                    </button>
+                    <button mat-menu-item (click)="openDeleteManufacturer(item)">
+                        <mat-icon>delete</mat-icon>
+                        <span>{{ 'MATERIAL_MNG.delete' | translate }}</span>
+                    </button>
+                </span>
+            </ng-template>
+        </mat-menu>
+    </app-context-menu>
+-->
+</div>
